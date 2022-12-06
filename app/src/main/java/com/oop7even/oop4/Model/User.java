@@ -1,4 +1,4 @@
-package com.oop7even.oop4.Model.User;
+package com.oop7even.oop4.Model;
 
 import java.util.ArrayList;
 
