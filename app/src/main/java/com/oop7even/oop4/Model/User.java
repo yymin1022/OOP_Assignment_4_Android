@@ -2,34 +2,55 @@ package com.oop7even.oop4.Model;
 
 import java.util.ArrayList;
 
-import com.oop7even.oop4.Model.Car;
-
-public class User {
+public class User{
     private String userName;
     private boolean isSeller;
     protected ArrayList<Car> Cars = new ArrayList<>();
 
-    protected String getName(){
-        return this.userName;
+    public User(String name, boolean isSeller){
+        this.userName = name;
+        this.isSeller = isSeller;
     }
 
-    protected ArrayList<Car> getCarList(){
+    // for Seller
+    public void addCar(Car newCar){
+        Cars.add(newCar);
+        // 신규 판매 차량 등록, 차량 리스트에 새로운 차량 추가
+        // 파일 입출력을 통해 판매 차량 명단 txt 파일에 차량에 대한 정보 추가
+        // 파일 내용 로직 상에서 갱신하는 과정 필요
+    }
+
+    // for Customer
+    public void buyCar(Car car, User seller){
+        Cars.add(car);
+        seller.Cars.remove(car);
+
+        // 차량 구매, myCar 리스트에 이 차량 추가
+        // 주인이 등록되었기에 기존 Car 리스트에서 차량 제거
+        // 알림 메시지 등 필요
+        // 파일 입출력으로 user의 차량 txt 파일에 이 차량에 대한 데이터를 이어붙이면서, 판매 차량 명단 txt 파일에 이 차량에 대한 데이터를 삭제
+        // 파일 내용 로직 상에서 갱신하는 과정 필요
+    }
+
+    public ArrayList<Car> getCarList(){
         return this.Cars;
     }
 
-    protected void setName(String name){
-        this.userName = name;
+    public String getName(){
+        return this.userName;
     }
 
-    protected void setCarList(ArrayList<Car> myList){
+    public void setCarList(ArrayList<Car> myList){
         this.Cars = myList;
     }
 
-    protected void showCarList(){
-        // 차량 리스트를 펼쳐, 모든 차량에 담긴 모든 정보를 조회하는 기능
+    public void setName(String name){
+        this.userName = name;
     }
 
-    protected void setIsSeller(boolean flag){
-        this.isSeller = flag;
+    public void showCarList(){
+        for(Car car : Cars){
+            car.printCarInfo();
+        }
     }
 }
