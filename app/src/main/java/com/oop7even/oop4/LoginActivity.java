@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         inputPW.addTextChangedListener(txtWatcher);
     }
 
-    View.OnClickListener clkListener = v -> {
+    View.OnClickListener clkListener = view -> {
         if(userName.isEmpty()){
             Toast.makeText(getApplicationContext(), "사용자 ID를 입력해주세요.", Toast.LENGTH_SHORT).show();
         }else if(userPW.isEmpty()){
