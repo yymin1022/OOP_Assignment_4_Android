@@ -11,12 +11,9 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.oop7even.oop4.Model.User;
-
-import org.w3c.dom.Text;
 
 public class LoginActivity extends AppCompatActivity {
     boolean isSeller = false;
