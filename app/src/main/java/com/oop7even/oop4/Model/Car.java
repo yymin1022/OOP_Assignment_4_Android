@@ -17,6 +17,7 @@ public class Car implements Serializable {
     private String manufacture;
     private String number;
     private String color;
+    private String carImage;
     private int price;
     private int capacity;
     private int distanceDriven;
@@ -73,6 +74,10 @@ public class Car implements Serializable {
 
     public String getColor(){
         return this.color;
+    }
+
+    public String getCarImage(){
+        return this.carImage;
     }
 
     public int getPrice(){
@@ -141,6 +146,10 @@ public class Car implements Serializable {
 
     public void setColor(String color){
         this.color = color;
+    }
+
+    public void setCarImage(String carImage){
+        this.carImage = carImage;
     }
 
     public void setPrice(int price){
