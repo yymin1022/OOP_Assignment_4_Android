@@ -8,15 +8,12 @@ import android.os.Bundle;
 import com.oop7even.oop4.Model.User;
 
 public class LoginActivity extends AppCompatActivity {
-    User user = new User("", false);
+    User user = new User("Sans", false);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        user.setName("Sans");
-
         completeLogin();
     }
 
