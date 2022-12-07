@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     AppCompatButton btnRegister;
     AppCompatButton btnSearch;
     RecyclerView recycleCar;
+    TextView tvCarCnt;
     TextView tvUsername;
     User user = new User("", false);
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.main_btn_register);
         btnSearch = findViewById(R.id.main_btn_search);
         recycleCar = findViewById(R.id.main_recycler_car);
+        tvCarCnt = findViewById(R.id.main_tv_car_cnt);
         tvUsername = findViewById(R.id.main_tv_username);
 
         if(!isLoggedIn) {
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setVisibility(isSeller ? View.VISIBLE : View.INVISIBLE);
         recycleCar.setAdapter(carAdapter);
         recycleCar.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        tvCarCnt.setText(String.valueOf(tmpCarList.size()));
         tvUsername.setText(user.getName());
     }
 }
