@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace "com.oop7even.oop4"
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.oop7even.oop4"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
