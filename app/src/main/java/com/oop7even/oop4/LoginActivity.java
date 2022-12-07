@@ -14,6 +14,7 @@ import com.oop7even.oop4.Model.User;
 
 public class LoginActivity extends AppCompatActivity {
     boolean isSeller = false;
+    String userName = "";
 
     User user = new User("Sans", false);
 
@@ -33,6 +34,9 @@ public class LoginActivity extends AppCompatActivity {
     CompoundButton.OnCheckedChangeListener chkListener = (compoundButton, b) -> isSeller = b;
 
     void completeLogin(){
+        user.setIsSeller(isSeller);
+        user.setName(userName);
+
         Intent resultIntent = new Intent(this, LoginActivity.class);
         resultIntent.putExtra("user", user);
         resultIntent.putExtra("isSeller", isSeller);
