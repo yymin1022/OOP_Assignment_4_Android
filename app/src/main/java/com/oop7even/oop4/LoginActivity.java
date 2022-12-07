@@ -14,7 +14,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        completeLogin();
+//        completeLogin();
     }
 
     void completeLogin(){
