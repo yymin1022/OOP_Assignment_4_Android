@@ -38,10 +38,12 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
         String carPrice = String.valueOf(carData.get(position).getPrice());
         String carYear = String.valueOf(carData.get(position).getYear());
         String carColor = carData.get(position).getColor();
+        String carManufacture = carData.get(position).getManufacture();
         String carName = carData.get(position).getName();
 
         holder.tvCarColor.setText(carColor);
         holder.tvCarDist.setText(carDist);
+        holder.tvCarManufacture.setText(carManufacture);
         holder.tvCarName.setText(carName);
         holder.tvCarPrice.setText(carPrice);
         holder.tvCarYear.setText(carYear);
@@ -55,6 +57,7 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvCarColor;
         TextView tvCarDist;
+        TextView tvCarManufacture;
         TextView tvCarName;
         TextView tvCarPrice;
         TextView tvCarYear;
@@ -64,6 +67,7 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
 
             tvCarColor = itemView.findViewById(R.id.recycle_tv_color);
             tvCarDist = itemView.findViewById(R.id.recycle_tv_dist);
+            tvCarManufacture = itemView.findViewById(R.id.recycle_tv_manufacture);
             tvCarName = itemView.findViewById(R.id.recycle_tv_name);
             tvCarPrice = itemView.findViewById(R.id.recycle_tv_price);
             tvCarYear = itemView.findViewById(R.id.recycle_tv_year);
