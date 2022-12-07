@@ -3,22 +3,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="25dp"
+    android:gravity="center_vertical"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="로그인" />
+        android:text="로그인"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="안녕하세요, CAU Dealer입니다." />
+        android:text="안녕하세요,\nCAU Dealer입니다."
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="회원 서비스 이용을 위해 로그인 해주세요." />
+        android:text="회원 서비스 이용을 위해 로그인 해주세요."
+        android:textSize="13sp" />
 
     <EditText
         android:layout_width="match_parent"
