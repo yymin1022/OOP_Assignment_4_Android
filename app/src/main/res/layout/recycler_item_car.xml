@@ -51,6 +51,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <TextView
@@ -61,6 +62,15 @@
                     android:textSize="15sp"/>
 
             </LinearLayout>
+            
+            <ImageView
+                android:layout_width="320dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/gray"
+                android:id="@+id/recycle_image_car" />
 
             <LinearLayout
                 android:layout_width="match_parent"
