@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/recycle_tv_manufacture"
                     android:textColor="@color/black"
-                    android:textSize="25sp"/>
+                    android:textSize="30sp"/>
 
                 <View
                     android:layout_width="10dp"
@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/recycle_tv_name"
                     android:textColor="@color/black"
-                    android:textSize="25sp"/>
+                    android:textSize="30sp"/>
 
             </LinearLayout>
 
@@ -73,56 +73,98 @@
                 android:id="@+id/recycle_image_car" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
                     android:text="주행거리"
                     android:textColor="@color/black"
                     android:textSize="15sp"/>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recycle_tv_dist"
-                    android:textColor="@color/gray"
-                    android:textSize="15sp"/>
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:textSize="15sp"
+                        android:id="@+id/recycle_tv_dist" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="km"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
                     android:text="연식"
                     android:textColor="@color/black"
                     android:textSize="15sp"/>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recycle_tv_year"
-                    android:textColor="@color/gray"
-                    android:textSize="15sp"/>
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:textSize="15sp"
+                        android:id="@+id/recycle_tv_year" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="년식"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
                     android:text="색상"
                     android:textColor="@color/black"
                     android:textSize="15sp"/>
@@ -130,29 +172,60 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recycle_tv_color"
+                    android:layout_weight="1"
+                    android:gravity="end"
                     android:textColor="@color/gray"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:id="@+id/recycle_tv_color" />
 
             </LinearLayout>
 
+            <View
+                android:layout_width="320dp"
+                android:layout_height="1dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/lightgray" />
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:text="사고 없음 / 개조 없음"
                     android:textColor="@color/black"
-                    android:textSize="20sp"/>
+                    android:textSize="15sp"/>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/recycle_tv_price"
-                    android:textColor="@color/gray"
-                    android:textSize="20sp"/>
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:id="@+id/recycle_tv_price" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="만원"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
