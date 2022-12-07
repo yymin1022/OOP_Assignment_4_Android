@@ -5,6 +5,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent> loginLauncher;
     AppCompatButton btnRegister;
     AppCompatButton btnSearch;
+    RecyclerView recycleCar;
     TextView tvUsername;
     User user = new User("", false);
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnRegister = findViewById(R.id.main_btn_register);
         btnSearch = findViewById(R.id.main_btn_search);
+        recycleCar = findViewById(R.id.main_recycler_car);
         tvUsername = findViewById(R.id.main_tv_username);
 
         if(!isLoggedIn) {
