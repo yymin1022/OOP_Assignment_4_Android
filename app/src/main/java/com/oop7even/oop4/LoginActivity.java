@@ -5,17 +5,25 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.oop7even.oop4.Model.User;
 
+import org.w3c.dom.Text;
+
 public class LoginActivity extends AppCompatActivity {
     boolean isSeller = false;
     String userName = "";
+    String userPW = "";
 
+    EditText inputID;
+    EditText inputPW;
     User user = new User("Sans", false);
 
     @Override
@@ -25,13 +33,39 @@ public class LoginActivity extends AppCompatActivity {
 
         AppCompatButton btnLogin = findViewById(R.id.login_btn_login);
         CheckBox chkIsSeller = findViewById(R.id.login_chk_seller);
+        inputID = findViewById(R.id.login_input_id);
+        inputPW = findViewById(R.id.login_input_pw);
 
         btnLogin.setOnClickListener(clkListener);
         chkIsSeller.setOnCheckedChangeListener(chkListener);
+        inputID.addTextChangedListener(txtWatcher);
+        inputPW.addTextChangedListener(txtWatcher);
     }
 
     View.OnClickListener clkListener = view -> completeLogin();
     CompoundButton.OnCheckedChangeListener chkListener = (compoundButton, b) -> isSeller = b;
+    TextWatcher txtWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            String input = editable.toString();
+
+            if(input.equals(inputID.getText().toString())){
+                userName = input;
+            }else if(input.equals(inputPW.getText().toString())){
+                userPW = input;
+            }
+        }
+    };
 
     void completeLogin(){
         user.setIsSeller(isSeller);
