@@ -78,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
         testCar.addAccident(new Accident("2022. 11. 28. 12:00", "차선변경 중 상대방 과실 100% 접촉사고. 좌측 휀더 교환"));
         testCar.addTune(new Tune("2022. 10. 23.", "배기구 2개, 가변밸브 1개"));
         tmpCarList.add(testCar);
+        tmpCarList.add(testCar);
+        tmpCarList.add(testCar);
 
         CarRecyclerAdapter carAdapter = new CarRecyclerAdapter(tmpCarList);
 
