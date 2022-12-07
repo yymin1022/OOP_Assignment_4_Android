@@ -2,12 +2,23 @@ package com.oop7even.oop4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
-public class CarDetailActivity extends AppCompatActivity {
+import com.oop7even.oop4.Model.Car;
+
+public class CarDetailActivity extends AppCompatActivity{
+    Car car;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_detail);
+
+        car = (Car)getIntent().getSerializableExtra("Car");
+
+        Toast.makeText(getApplicationContext(), car.getName(), Toast.LENGTH_SHORT).show();
     }
 }
