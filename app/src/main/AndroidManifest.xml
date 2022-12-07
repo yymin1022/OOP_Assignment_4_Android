@@ -20,14 +20,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".CarRegister"
+            android:name=".CarRegisterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".CarDetailView"
+            android:name=".CarDetailActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
