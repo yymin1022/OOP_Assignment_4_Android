@@ -102,10 +102,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/blue_700"
                     android:text="원하는 차량 검색"
+                    android:textColor="@color/white"
                     android:id="@+id/main_btn_search"  />
 
                 <View
@@ -113,10 +115,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:layout_width="170dp"
                     android:layout_height="wrap_content"
+                    android:background="@color/blue_700"
                     android:text="매물 등록하기"
+                    android:textColor="@color/white"
                     android:id="@+id/main_btn_register"  />
 
             </LinearLayout>
