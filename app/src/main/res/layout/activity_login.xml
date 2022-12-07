@@ -15,6 +15,10 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,11 +27,19 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="회원 서비스 이용을 위해 로그인 해주세요."
         android:textSize="13sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -42,7 +54,11 @@
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="관리자 계정으로 로그인합니다" />
+        android:text="판매자 계정으로 로그인합니다" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
