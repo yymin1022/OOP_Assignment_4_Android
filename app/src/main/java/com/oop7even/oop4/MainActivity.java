@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.oop7even.oop4.Model.User;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent> loginLauncher;
     AppCompatButton btnRegister;
     AppCompatButton btnSearch;
+    TextView tvUsername;
     User user = new User("", false);
 
     @Override
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnRegister = findViewById(R.id.main_btn_register);
         btnSearch = findViewById(R.id.main_btn_search);
+        tvUsername = findViewById(R.id.main_tv_username);
 
         if(!isLoggedIn) {
             openLogin();
@@ -61,5 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
     void setupUI(){
         btnRegister.setVisibility(isSeller ? View.VISIBLE : View.INVISIBLE);
+        tvUsername.setText(user.getName());
     }
 }
