@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.oop7even.oop4.Model.User;
 
@@ -42,7 +43,16 @@ public class LoginActivity extends AppCompatActivity {
         inputPW.addTextChangedListener(txtWatcher);
     }
 
-    View.OnClickListener clkListener = view -> completeLogin();
+    View.OnClickListener clkListener = v -> {
+        if(userName.isEmpty()){
+            Toast.makeText(getApplicationContext(), "사용자 ID를 입력해주세요.", Toast.LENGTH_SHORT).show();
+        }else if(userPW.isEmpty()){
+            Toast.makeText(getApplicationContext(), "로그인 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+        }else{
+            completeLogin();
+        }
+    };
+
     CompoundButton.OnCheckedChangeListener chkListener = (compoundButton, b) -> isSeller = b;
     TextWatcher txtWatcher = new TextWatcher() {
         @Override
