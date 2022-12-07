@@ -63,7 +63,8 @@
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="판매자 계정으로 로그인합니다" />
+        android:text="판매자 계정으로 로그인합니다"
+        android:id="@+id/login_chk_seller" />
 
     <View
         android:layout_width="match_parent"
@@ -75,6 +76,6 @@
         android:background="@color/blue_700"
         android:text="로그인하기"
         android:textColor="@color/white"
-        android:id="@+id/main_btn_search"  />
+        android:id="@+id/login_btn_login"  />
 
 </LinearLayout>
