@@ -13,6 +13,7 @@ import com.oop7even.oop4.Model.User;
 
 public class MainActivity extends AppCompatActivity {
     boolean isLoggedIn = false;
+    boolean isSeller = false;
 
     ActivityResultLauncher<Intent> loginLauncher;
     User user = new User("", false);
@@ -39,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent resultIntent = result.getData();
 
                 if(resultIntent != null){
+                    isSeller = resultIntent.getBooleanExtra("isSeller", false);
                     user = (User) resultIntent.getSerializableExtra("user");
-                    Toast.makeText(getApplicationContext(), user.getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), isSeller ? "Seller : " : "Customer : " + user.getName(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

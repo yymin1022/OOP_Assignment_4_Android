@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     void completeLogin(){
         Intent resultIntent = new Intent(this, LoginActivity.class);
         resultIntent.putExtra("user", user);
+        resultIntent.putExtra("isSeller", isSeller);
         setResult(9001, resultIntent);
         finish();
     }

@@ -39,12 +39,20 @@ public class User implements Serializable {
         return this.Cars;
     }
 
+    public boolean getIsSeller(){
+        return this.isSeller;
+    }
+
     public String getName(){
         return this.userName;
     }
 
     public void setCarList(ArrayList<Car> myList){
         this.Cars = myList;
+    }
+
+    public void setIsSeller(boolean isSeller){
+        this.isSeller = isSeller;
     }
 
     public void setName(String name){
