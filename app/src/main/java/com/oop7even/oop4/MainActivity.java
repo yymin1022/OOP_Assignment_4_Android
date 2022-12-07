@@ -26,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar mainToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
 
-        openLogin();
+        if(!isLoggedIn) {
+            openLogin();
+        }
     }
 
     void openLogin(){
