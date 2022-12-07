@@ -2,9 +2,7 @@ package com.oop7even.oop4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.oop7even.oop4.Model.Car;
