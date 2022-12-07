@@ -15,7 +15,7 @@ import com.oop7even.oop4.R;
 import java.util.ArrayList;
 
 public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.ViewHolder>{
-    private ArrayList<Car> carData = null;
+    private final ArrayList<Car> carData;
 
     public interface OnCarClickListener{
         void onCarClicked(int position, Car clickedCar);
@@ -40,14 +40,11 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
         View view = inflater.inflate(R.layout.recycler_item_car, parent, false);
         ViewHolder holder = new ViewHolder(view);
 
-        view.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                int position = holder.getAdapterPosition();
-                if(position != RecyclerView.NO_POSITION){
-                    Car clicked = carData.get(position);
-                    carClickListener.onCarClicked(position, clicked);
-                }
+        view.setOnClickListener(v -> {
+            int position = holder.getAdapterPosition();
+            if(position != RecyclerView.NO_POSITION){
+                Car clicked = carData.get(position);
+                carClickListener.onCarClicked(position, clicked);
             }
         });
 
@@ -78,7 +75,7 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
         return carData.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvCarColor;
         TextView tvCarDist;
         TextView tvCarFuel;
