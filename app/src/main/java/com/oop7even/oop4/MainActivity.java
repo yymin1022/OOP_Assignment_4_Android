@@ -90,5 +90,14 @@ public class MainActivity extends AppCompatActivity {
         recycleCar.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         tvCarCnt.setText(String.valueOf(tmpCarList.size()));
         tvUsername.setText(user.getName());
+
+        carAdapter.setOnCarClickListener(new CarRecyclerAdapter.OnCarClickListener() {
+            @Override
+            public void onCarClicked(int position, Car clickedCar) {
+                Intent intent = new Intent(getApplicationContext(), CarDetailActivity.class);
+                intent.putExtra("Car", clickedCar);
+                startActivity(intent);
+            }
+        });
     }
 }

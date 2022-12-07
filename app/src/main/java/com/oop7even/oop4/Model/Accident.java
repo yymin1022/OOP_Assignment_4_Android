@@ -1,6 +1,10 @@
 package com.oop7even.oop4.Model;
 
-public class Accident{
+import java.io.Serializable;
+
+public class Accident implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String date;
     private String content;
 

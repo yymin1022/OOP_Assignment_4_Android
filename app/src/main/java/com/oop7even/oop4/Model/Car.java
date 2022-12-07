@@ -1,8 +1,11 @@
 package com.oop7even.oop4.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Car{
+public class Car implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private enum Fuel{
         Diesel,
         Electric,

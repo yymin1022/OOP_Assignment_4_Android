@@ -17,6 +17,16 @@ import java.util.ArrayList;
 public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.ViewHolder>{
     private ArrayList<Car> carData = null;
 
+    public interface OnCarClickListener{
+        void onCarClicked(int position, Car clickedCar);
+    }
+
+    private OnCarClickListener carClickListener;
+
+    public void setOnCarClickListener(OnCarClickListener listener){
+        carClickListener = listener;
+    }
+
     public CarRecyclerAdapter(ArrayList<Car> carData){
         this.carData = carData;
     }
@@ -28,8 +38,20 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View view = inflater.inflate(R.layout.recycler_item_car, parent, false);
+        ViewHolder holder = new ViewHolder(view);
 
-        return new ViewHolder(view);
+        view.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                if(position != RecyclerView.NO_POSITION){
+                    Car clicked = carData.get(position);
+                    carClickListener.onCarClicked(position, clicked);
+                }
+            }
+        });
+
+        return holder;
     }
 
     @Override
