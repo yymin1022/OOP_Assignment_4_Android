@@ -5,6 +5,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -13,7 +14,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.oop7even.oop4.Adapter.CarRecyclerAdapter;
+import com.oop7even.oop4.Model.Accident;
+import com.oop7even.oop4.Model.Car;
+import com.oop7even.oop4.Model.Tune;
 import com.oop7even.oop4.Model.User;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     boolean isLoggedIn = false;
@@ -66,7 +73,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void setupUI(){
+        ArrayList<Car> tmpCarList = new ArrayList<>();
+        Car testCar = new Car("Veloster N", "Hyundai", "123구1234", "White", 2300, 5, 87120, 2019, "Gasoline", true, true);
+        testCar.addAccident(new Accident("2022. 11. 28. 12:00", "차선변경 중 상대방 과실 100% 접촉사고. 좌측 휀더 교환"));
+        testCar.addTune(new Tune("2022. 10. 23.", "배기구 2개, 가변밸브 1개"));
+        tmpCarList.add(testCar);
+
+        CarRecyclerAdapter carAdapter = new CarRecyclerAdapter(tmpCarList);
+
         btnRegister.setVisibility(isSeller ? View.VISIBLE : View.INVISIBLE);
+        recycleCar.setAdapter(carAdapter);
+        recycleCar.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         tvUsername.setText(user.getName());
     }
 }
