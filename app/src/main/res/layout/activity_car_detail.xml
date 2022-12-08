@@ -314,6 +314,14 @@
 
         </LinearLayout>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue_700"
+            android:text="구매하기"
+            android:textColor="@color/white"
+            android:id="@+id/detail_btn_buy"  />
+
     </LinearLayout>
 
 </LinearLayout>
