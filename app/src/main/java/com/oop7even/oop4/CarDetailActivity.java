@@ -1,7 +1,6 @@
 package com.oop7even.oop4;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,9 +35,6 @@ public class CarDetailActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_detail);
-
-        Toolbar mainToolbar = findViewById(R.id.detail_toolbar);
-        setSupportActionBar(mainToolbar);
 
         car = (Car)getIntent().getSerializableExtra("Car");
 

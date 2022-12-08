@@ -5,13 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@color/blue_500"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:id="@+id/detail_toolbar" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
