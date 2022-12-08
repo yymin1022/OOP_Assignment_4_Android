@@ -1,12 +1,15 @@
 package com.oop7even.oop4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.oop7even.oop4.Adapter.AccidentTuneRecyclerAdapter;
 import com.oop7even.oop4.Model.Car;
 
 public class CarDetailActivity extends AppCompatActivity{
@@ -23,6 +26,8 @@ public class CarDetailActivity extends AppCompatActivity{
     TextView tvCarPrice;
     TextView tvCarYear;
 
+    RecyclerView recyclerAccident;
+    RecyclerView recyclerTune;
     TextView tvCarNoAccident;
     TextView tvCarNoTune;
 
@@ -44,6 +49,8 @@ public class CarDetailActivity extends AppCompatActivity{
         tvCarPrice = findViewById(R.id.detail_tv_price);
         tvCarYear = findViewById(R.id.detail_tv_year);
 
+        recyclerAccident = findViewById(R.id.detail_recycler_accident);
+        recyclerTune = findViewById(R.id.detail_recycler_tune);
         tvCarNoAccident = findViewById(R.id.detail_tv_no_accident);
         tvCarNoTune = findViewById(R.id.detail_tv_no_tune);
 
@@ -62,11 +69,21 @@ public class CarDetailActivity extends AppCompatActivity{
         tvCarYear.setText(String.valueOf(car.getYear()));
 
         if(car.getIsAccident()){
-            tvCarNoAccident.setVisibility(View.INVISIBLE);
+            AccidentTuneRecyclerAdapter accidentAdapter = new AccidentTuneRecyclerAdapter(true, car.getAccidents(), null);
+            recyclerAccident.setVisibility(View.VISIBLE);
+            recyclerAccident.setAdapter(accidentAdapter);
+            recyclerAccident.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+            tvCarNoAccident.setVisibility(View.GONE);
         }
 
         if(car.getIsTuned()){
-            tvCarNoTune.setVisibility(View.INVISIBLE);
+            AccidentTuneRecyclerAdapter tuneAdapter = new AccidentTuneRecyclerAdapter(false, null, car.getTunes());
+            recyclerTune.setVisibility(View.VISIBLE);
+            recyclerTune.setAdapter(tuneAdapter);
+            recyclerTune.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+            tvCarNoTune.setVisibility(View.GONE);
         }
     }
 }
