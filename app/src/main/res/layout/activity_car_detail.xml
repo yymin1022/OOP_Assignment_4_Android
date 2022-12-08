@@ -223,15 +223,28 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginLeft="5dp"
                     android:gravity="end"
-                    android:textColor="@color/gray"
-                    android:textSize="15sp"
-                    android:id="@+id/detail_tv_capacity" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:textSize="15sp"
+                        android:id="@+id/detail_tv_capacity" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="명"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -256,15 +269,28 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginLeft="5dp"
                     android:gravity="end"
-                    android:textColor="@color/gray"
-                    android:textSize="15sp"
-                    android:id="@+id/detail_tv_dist" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:textSize="15sp"
+                        android:id="@+id/detail_tv_dist" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="km"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -282,15 +308,28 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginLeft="5dp"
                     android:gravity="end"
-                    android:textColor="@color/gray"
-                    android:textSize="15sp"
-                    android:id="@+id/detail_tv_year" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:textSize="15sp"
+                        android:id="@+id/detail_tv_year" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="년식"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
