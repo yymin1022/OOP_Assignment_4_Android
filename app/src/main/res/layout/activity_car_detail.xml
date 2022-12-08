@@ -7,7 +7,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="240dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
         android:background="@color/gray"
@@ -333,6 +333,11 @@
                 android:id="@+id/detail_tv_no_tune" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@color/transparent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
