@@ -266,6 +266,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
+                    android:gravity="end"
                     android:textColor="@color/gray"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_year" />
