@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                 break;
         }
-    }
+    };
 
     void openLogin(){
         Intent initIntent = new Intent(this, LoginActivity.class);
