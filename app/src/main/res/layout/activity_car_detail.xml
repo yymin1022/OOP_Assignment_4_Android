@@ -65,7 +65,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
                     android:gravity="end"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_type" />
 
@@ -91,7 +91,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
                     android:gravity="end"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_company" />
 
@@ -117,7 +117,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
                     android:gravity="end"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_number" />
 
@@ -143,7 +143,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
                     android:gravity="end"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_color" />
 
@@ -169,7 +169,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
                     android:gravity="end"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_fuel" />
 
@@ -195,7 +195,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
                     android:gravity="end"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_capacity" />
 
@@ -221,7 +221,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
                     android:gravity="end"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_dist" />
 
@@ -246,7 +246,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_year" />
 
