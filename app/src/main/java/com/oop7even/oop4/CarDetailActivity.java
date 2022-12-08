@@ -3,6 +3,7 @@ package com.oop7even.oop4;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -22,6 +23,9 @@ public class CarDetailActivity extends AppCompatActivity{
     TextView tvCarPrice;
     TextView tvCarYear;
 
+    TextView tvCarNoAccident;
+    TextView tvCarNoTune;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -40,6 +44,9 @@ public class CarDetailActivity extends AppCompatActivity{
         tvCarPrice = findViewById(R.id.detail_tv_price);
         tvCarYear = findViewById(R.id.detail_tv_year);
 
+        tvCarNoAccident = findViewById(R.id.detail_tv_no_accident);
+        tvCarNoTune = findViewById(R.id.detail_tv_no_tune);
+
         setCarInfo();
     }
 
@@ -53,5 +60,13 @@ public class CarDetailActivity extends AppCompatActivity{
         tvCarNumber.setText(car.getNumber());
         tvCarPrice.setText(String.valueOf(car.getPrice()));
         tvCarYear.setText(String.valueOf(car.getYear()));
+
+        if(car.getIsAccident()){
+            tvCarNoAccident.setVisibility(View.INVISIBLE);
+        }
+
+        if(car.getIsTuned()){
+            tvCarNoTune.setVisibility(View.INVISIBLE);
+        }
     }
 }
