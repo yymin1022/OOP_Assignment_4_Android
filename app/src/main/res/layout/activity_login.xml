@@ -54,12 +54,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="아이디"
+        android:inputType="text"
         android:id="@+id/login_input_id" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="비밀번호"
+        android:inputType="textPassword"
         android:id="@+id/login_input_pw" />
 
     <CheckBox
