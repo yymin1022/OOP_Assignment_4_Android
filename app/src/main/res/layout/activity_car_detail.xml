@@ -53,6 +53,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="분류"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -60,7 +61,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="5dp"
+                    android:gravity="end"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_type" />
@@ -75,6 +78,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="제조사"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -82,7 +86,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="5dp"
+                    android:gravity="end"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_company" />
@@ -97,6 +103,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="차량 번호"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -104,7 +111,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="5dp"
+                    android:gravity="end"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_number" />
@@ -119,6 +128,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="색상"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -126,7 +136,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="5dp"
+                    android:gravity="end"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_color" />
@@ -141,6 +153,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="연료"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -148,7 +161,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="5dp"
+                    android:gravity="end"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_fuel" />
@@ -163,6 +178,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="탑승정원"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -170,7 +186,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="5dp"
+                    android:gravity="end"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_capacity" />
@@ -185,6 +203,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="주행거리"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -192,7 +211,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="5dp"
+                    android:gravity="end"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:id="@+id/detail_tv_dist" />
@@ -207,6 +228,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="연식"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -214,6 +236,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginLeft="5dp"
                     android:textColor="@color/black"
                     android:textSize="15sp"
