@@ -34,9 +34,8 @@ public class AccidentTuneRecyclerAdapter extends RecyclerView.Adapter<AccidentTu
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View view = inflater.inflate(R.layout.recycler_item_accident_tune, parent, false);
-        AccidentTuneRecyclerAdapter.ViewHolder holder = new AccidentTuneRecyclerAdapter.ViewHolder(view);
 
-        return holder;
+        return new AccidentTuneRecyclerAdapter.ViewHolder(view);
     }
 
     @Override
