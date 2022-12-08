@@ -75,10 +75,75 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="차량 기본 정보" />
+                android:paddingBottom="10dp"
+                android:hint="차량 번호"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/register_input_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="21" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:hint="차량 모델"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/register_input_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="21" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:hint="차량 제조사"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/register_input_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="21" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:hint="연식"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/register_input_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="21" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:hint="연료"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/register_input_fuel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="21" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
@@ -110,10 +175,47 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="색상, 주행거리, 탑승정원" />
+                android:paddingBottom="10dp"
+                android:hint="색상"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/register_input_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="21" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:hint="주행거리"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/register_input_distance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="21" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:hint="탑승 정원"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/register_input_capacity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="21" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
@@ -145,10 +247,33 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="사고 정보" />
+                android:paddingBottom="10dp"
+                android:hint="사고 날짜"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/register_input_accident_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="21" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:hint="사고 내용"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/register_input_accident_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="21" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
@@ -180,10 +305,33 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="튜닝 정보" />
+                android:paddingBottom="10dp"
+                android:hint="튜닝 날짜"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/register_input_tune_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="21" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:hint="튜닝 내용"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/register_input_tune_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="21" />
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
