@@ -51,6 +51,20 @@ public class MainActivity extends AppCompatActivity {
         if(!isLoggedIn) {
             openLogin();
         }
+
+        btnRegister.setOnClickListener(onBtnListener);
+        btnSearch.setOnClickListener(onBtnListener);
+    }
+
+    View.OnClickListener onBtnListener = v -> {
+        switch(v.getId()){
+            case R.id.main_btn_register:
+                startActivity(new Intent(getApplicationContext(), CarRegisterActivity.class));
+                break;
+            case R.id.main_btn_search:
+                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                break;
+        }
     }
 
     void openLogin(){
