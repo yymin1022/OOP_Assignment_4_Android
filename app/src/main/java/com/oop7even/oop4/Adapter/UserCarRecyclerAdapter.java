@@ -37,9 +37,12 @@ public class UserCarRecyclerAdapter extends RecyclerView.Adapter<UserCarRecycler
     public void onBindViewHolder(@NonNull ViewHolder holder, int position){
         String carCompany = carList.get(position).getManufacture();
         String carFuel = carList.get(position).getFuel();
+//        String carImage = carData.get(position).getImage();
         String carName = carList.get(position).getName();
         String carPrice = String.valueOf(carList.get(position).getPrice());
 
+//        byte[] imageAsBytes = Base64.decode(carImage.getBytes(), Base64.DEFAULT);
+//        holder.ivCarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
         holder.tvCompany.setText(carCompany);
         holder.tvFuel.setText(carFuel);
         holder.tvName.setText(carName);
@@ -52,7 +55,7 @@ public class UserCarRecyclerAdapter extends RecyclerView.Adapter<UserCarRecycler
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView ivCar;
+        ImageView ivCarImage;
         TextView tvCompany;
         TextView tvFuel;
         TextView tvName;
@@ -61,7 +64,7 @@ public class UserCarRecyclerAdapter extends RecyclerView.Adapter<UserCarRecycler
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ivCar = itemView.findViewById(R.id.recycle_user_image_car);
+            ivCarImage = itemView.findViewById(R.id.recycle_user_image_car);
             tvCompany = itemView.findViewById(R.id.recycle_user_tv_manufacture);
             tvFuel = itemView.findViewById(R.id.recycle_user_tv_fuel);
             tvName = itemView.findViewById(R.id.recycle_user_tv_name);
