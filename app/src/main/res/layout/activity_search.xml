@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="판매하실 차량을 등록해주세요"
+        android:text="원하는 차량을 검색해보세요"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
