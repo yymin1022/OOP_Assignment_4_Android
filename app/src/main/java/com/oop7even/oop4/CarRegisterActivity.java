@@ -56,6 +56,8 @@ public class CarRegisterActivity extends AppCompatActivity {
         inputPrice = findViewById(R.id.register_input_price);
         inputType = findViewById(R.id.register_input_type);
         inputYear = findViewById(R.id.register_input_year);
+
+        btnRegister.setOnClickListener(btnListener);
     }
 
     View.OnClickListener btnListener = new View.OnClickListener() {
