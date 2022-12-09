@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
@@ -75,7 +76,8 @@ public class SearchActivity extends AppCompatActivity {
         carCompany = inputCompany.getText().toString();
         carName = inputName.getText().toString();
 
-        ArrayList<Car> resultCar = new ArrayList<>();
+        ArrayList<Car> resultCar = findCar(carName, carCompany, carType, carPriceMax, carPriceMin, carDistanceMax, carDistanceMin, carYearMax, carYearMin, carFuel, carIsAccident, carIsTune);
+        Toast.makeText(getApplicationContext(), resultCar.size(), Toast.LENGTH_SHORT).show();
     };
 
     MaterialButtonToggleGroup.OnButtonCheckedListener typeListener = (group, checkedId, isChecked) -> {
@@ -137,4 +139,34 @@ public class SearchActivity extends AppCompatActivity {
     CompoundButton.OnCheckedChangeListener tuneListener = (buttonView, isChecked) -> {
         carIsTune = isChecked;
     };
+
+    ArrayList<Car> findCar(String name, String company, String type, int maxPrice, int minPrice, int maxDistanceDriven, int minDistanceDriven, int maxYear, int minYear, String fuel, boolean isAccident, boolean isTuned){
+        ArrayList<Car> resultCarList = new ArrayList<>();
+
+        for(Car car : carList){
+            if(type.equals("All")){
+                if(fuel.equals("All")){
+                    if(car.getName().contains(name) && car.getManufacture().contains(company) && car.getPrice() <= maxPrice && car.getPrice() >= minPrice && car.getDistanceDriven() <= maxDistanceDriven && car.getDistanceDriven() >= minDistanceDriven && car.getYear() <= maxYear && car.getYear() >= minYear &&  car.getIsAccident() == isAccident && car.getIsTuned() == isTuned){
+                        resultCarList.add(car);
+                    }
+                }else{
+                    if(car.getName().contains(name) && car.getManufacture().contains(company) && car.getPrice() <= maxPrice && car.getPrice() >= minPrice && car.getDistanceDriven() <= maxDistanceDriven && car.getDistanceDriven() >= minDistanceDriven && car.getYear() <= maxYear && car.getYear() >= minYear && car.getFuel().equals(fuel) && car.getIsAccident() == isAccident && car.getIsTuned() == isTuned){
+                        resultCarList.add(car);
+                    }
+                }
+            }else{
+                if(fuel.equals("All")){
+                    if(car.getName().contains(name) && car.getManufacture().contains(company) && car.getType().equals(type) && car.getPrice() <= maxPrice && car.getPrice() >= minPrice && car.getDistanceDriven() <= maxDistanceDriven && car.getDistanceDriven() >= minDistanceDriven && car.getYear() <= maxYear && car.getYear() >= minYear && car.getIsAccident() == isAccident && car.getIsTuned() == isTuned){
+                        resultCarList.add(car);
+                    }
+                }else{
+                    if(car.getName().contains(name) && car.getManufacture().contains(company) && car.getType().equals(type) && car.getPrice() <= maxPrice && car.getPrice() >= minPrice && car.getDistanceDriven() <= maxDistanceDriven && car.getDistanceDriven() >= minDistanceDriven && car.getYear() <= maxYear && car.getYear() >= minYear && car.getFuel().equals(fuel) && car.getIsAccident() == isAccident && car.getIsTuned() == isTuned){
+                        resultCarList.add(car);
+                    }
+                }
+            }
+        }
+        
+        return resultCarList;
+    }
 }
