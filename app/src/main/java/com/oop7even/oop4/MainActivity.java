@@ -131,7 +131,9 @@ public class MainActivity extends AppCompatActivity {
         carList.add(testCar);
         carList.add(testCar);
 
-        user.addCar(testCar2);
+        User seller = new User("Sans", true);
+        seller.addCar(testCar2);
+        user.buyCar(testCar2, seller);
 
         CarRecyclerAdapter carAdapter = new CarRecyclerAdapter(carList);
 
