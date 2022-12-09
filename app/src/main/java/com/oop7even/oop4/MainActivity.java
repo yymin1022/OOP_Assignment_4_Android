@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         switch(v.getId()){
             case R.id.main_btn_register:
                 intent = new Intent(getApplicationContext(), CarRegisterActivity.class);
-                intent.putExtra("car", carList);
+                intent.putExtra("user", user);
                 startActivity(intent);
                 break;
             case R.id.main_btn_search:

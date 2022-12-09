@@ -6,12 +6,18 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.oop7even.oop4.Model.Accident;
 import com.oop7even.oop4.Model.Car;
 import com.oop7even.oop4.Model.Tune;
+import com.oop7even.oop4.Model.User;
+
+import java.util.ArrayList;
 
 public class CarRegisterActivity extends AppCompatActivity {
+    User user;
+
     int carCapacity;
     int carDistance;
     int carPrice;
@@ -44,6 +50,8 @@ public class CarRegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_register);
+
+        user = (User)getIntent().getSerializableExtra("user");
 
         btnRegister = findViewById(R.id.register_btn_register);
         inputCapacity = findViewById(R.id.register_input_capacity);
@@ -95,13 +103,12 @@ public class CarRegisterActivity extends AppCompatActivity {
                 newCar.addTune(tmpTune);
             }
 
-            // Upload to Firebase
+            if(user.addCar(newCar)){
+                Toast.makeText(getApplicationContext(), "차량이 등록되었습니다.", Toast.LENGTH_SHORT).show();
+                // Upload to Firebase
+            }else{
+                Toast.makeText(getApplicationContext(), "차량을 등록하지 못했습니다.", Toast.LENGTH_SHORT).show();
+            }
         }
     };
-
-
-
-
-
-
 }
