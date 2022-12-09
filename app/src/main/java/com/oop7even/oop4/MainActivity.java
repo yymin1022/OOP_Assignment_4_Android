@@ -131,6 +131,8 @@ public class MainActivity extends AppCompatActivity {
         carList.add(testCar);
         carList.add(testCar);
 
+        user.addCar(testCar2);
+
         CarRecyclerAdapter carAdapter = new CarRecyclerAdapter(carList);
 
         btnRegister.setVisibility(isSeller ? View.VISIBLE : View.INVISIBLE);

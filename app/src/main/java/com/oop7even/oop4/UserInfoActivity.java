@@ -1,6 +1,7 @@
 package com.oop7even.oop4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -13,6 +14,8 @@ public class UserInfoActivity extends AppCompatActivity{
     ArrayList<Car> carList;
     User user;
 
+    RecyclerView recycleCar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -20,5 +23,7 @@ public class UserInfoActivity extends AppCompatActivity{
 
         carList = (ArrayList<Car>)getIntent().getSerializableExtra("car");
         user = (User)getIntent().getSerializableExtra("user");
+
+        recycleCar = findViewById(R.id.info_recycler_car);
     }
 }
