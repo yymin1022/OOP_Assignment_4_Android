@@ -12,6 +12,19 @@ import java.util.ArrayList;
 public class SearchActivity extends AppCompatActivity {
     ArrayList<Car> carList;
 
+    boolean isAccident = false;
+    boolean isTune = false;
+    int carDistanceMax = 300000;
+    int carDistanceMin = 0;
+    int carPriceMax = 5000;
+    int carPriceMin = 0;
+    int carYearMax = 2022;
+    int carYearMin = 0;
+    String carCompany;
+    String carFuel;
+    String carModel;
+    String carType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
