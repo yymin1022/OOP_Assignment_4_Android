@@ -1,6 +1,8 @@
 package com.oop7even.oop4.Adapter;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,11 +59,14 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
         String carColor = carData.get(position).getColor();
         String carDist = String.valueOf(carData.get(position).getDistanceDriven());
         String carFuel = carData.get(position).getFuel();
+//        String carImage = carData.get(position).getImage();
         String carManufacture = carData.get(position).getManufacture();
         String carName = carData.get(position).getName();
         String carPrice = String.valueOf(carData.get(position).getPrice());
         String carYear = String.valueOf(carData.get(position).getYear());
 
+//        byte[] imageAsBytes = Base64.decode(carImage.getBytes(), Base64.DEFAULT);
+//        holder.ivCarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
         holder.tvCarColor.setText(carColor);
         holder.tvCarDist.setText(carDist);
         holder.tvCarFuel.setText(carFuel);
