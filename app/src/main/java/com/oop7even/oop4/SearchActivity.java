@@ -28,10 +28,10 @@ public class SearchActivity extends AppCompatActivity {
     int carPriceMin = 0;
     int carYearMax = 2022;
     int carYearMin = 0;
-    String carCompany;
-    String carFuel;
-    String carModel;
-    String carType;
+    String carCompany = "";
+    String carFuel = "All";
+    String carModel = "";
+    String carType = "All";
 
     EditText inputCompany;
     EditText inputName;
