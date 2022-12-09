@@ -54,8 +54,8 @@ public class CarRegisterActivity extends AppCompatActivity {
         inputFuel = findViewById(R.id.register_input_fuel);
         inputName = findViewById(R.id.register_input_name);
         inputNumber = findViewById(R.id.register_input_number);
-//        inputPrice = findViewById(R.id.register_input_price);
-//        inputType = findViewById(R.id.register_input_type);
+        inputPrice = findViewById(R.id.register_input_price);
+        inputType = findViewById(R.id.register_input_type);
         inputYear = findViewById(R.id.register_input_year);
     }
 
@@ -69,8 +69,8 @@ public class CarRegisterActivity extends AppCompatActivity {
             carFuel = inputFuel.getText().toString();
             carName = inputName.getText().toString();
             carNumber = inputNumber.getText().toString();
-//            carPrice = Integer.parseInt(inputPrice.getText().toString());
-//            carType = inputType.getText().toString();
+            carPrice = Integer.parseInt(inputPrice.getText().toString());
+            carType = inputType.getText().toString();
             carYear = Integer.parseInt(inputYear.getText().toString());
 
             boolean isAccident = false;
