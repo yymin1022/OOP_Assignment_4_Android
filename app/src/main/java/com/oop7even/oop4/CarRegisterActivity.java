@@ -24,9 +24,6 @@ public class CarRegisterActivity extends AppCompatActivity {
     String carNumber;
     String carType;
 
-    Accident carAccident;
-    Tune carTune;
-
     AppCompatButton btnRegister;
     EditText inputCapacity;
     EditText inputColor;
