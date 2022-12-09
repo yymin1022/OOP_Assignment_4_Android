@@ -159,6 +159,42 @@
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="전체"
+                        android:id="@+id/search_radio_fuel_all" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="휘발유"
+                        android:id="@+id/search_radio_fuel_gasoline" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="경유"
+                        android:id="@+id/search_radio_fuel_diesel" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="LPG"
+                        android:id="@+id/search_radio_fuel_lpg" />
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="전기"
+                        android:id="@+id/search_radio_fuel_elec" />
+                </RadioGroup>
+
             </LinearLayout>
 
             <View
