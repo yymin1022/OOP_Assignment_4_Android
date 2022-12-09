@@ -44,6 +44,7 @@
                 <com.google.android.material.button.MaterialButtonToggleGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/search_toggle_type"
                     app:singleSelection="true">
                     <Button
                         android:layout_width="wrap_content"
