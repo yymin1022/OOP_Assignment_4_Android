@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.slider.RangeSlider;
@@ -33,6 +35,7 @@ public class SearchActivity extends AppCompatActivity {
     String carModel = "";
     String carType = "All";
 
+    MaterialButton btnSearch;
     EditText inputCompany;
     EditText inputName;
     MaterialButtonToggleGroup toggleType;
@@ -50,6 +53,7 @@ public class SearchActivity extends AppCompatActivity {
 
         carList = (ArrayList<Car>)getIntent().getSerializableExtra("car");
 
+        btnSearch = findViewById(R.id.search_btn_search);
         inputCompany = findViewById(R.id.search_input_company);
         inputName = findViewById(R.id.search_input_name);
         toggleType = findViewById(R.id.search_toggle_type);
@@ -60,6 +64,7 @@ public class SearchActivity extends AppCompatActivity {
         switchAccident = findViewById(R.id.search_switch_accident);
         switchTune = findViewById(R.id.search_switch_tune);
 
+        btnSearch.setOnClickListener(btnListener);
         toggleType.addOnButtonCheckedListener(typeListener);
         radioFuel.setOnCheckedChangeListener(fuelListener);
         sliderDistance.addOnChangeListener(distanceListener);
@@ -68,6 +73,13 @@ public class SearchActivity extends AppCompatActivity {
         switchAccident.setOnCheckedChangeListener(accidentListener);
         switchTune.setOnCheckedChangeListener(tuneListener);
     }
+
+    View.OnClickListener btnListener = v -> {
+        carCompany = inputCompany.getText().toString();
+        carModel = inputName.getText().toString();
+
+        ArrayList<Car> resultCar = new ArrayList<>();
+    };
 
     MaterialButtonToggleGroup.OnButtonCheckedListener typeListener = new MaterialButtonToggleGroup.OnButtonCheckedListener() {
         @Override
