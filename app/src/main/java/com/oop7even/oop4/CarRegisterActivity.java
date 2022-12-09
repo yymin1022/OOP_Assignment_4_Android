@@ -74,6 +74,11 @@ public class CarRegisterActivity extends AppCompatActivity {
     View.OnClickListener btnListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if(inputCapacity.getText().length() == 0 || inputDistance.getText().length() == 0 || inputPrice.getText().length() == 0 || inputYear.getText().length() == 0){
+                Toast.makeText(getApplicationContext(), "차량 정보를 모두 입력해주세요.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             carCapacity = Integer.parseInt(inputCapacity.getText().toString());
             carColor = inputColor.getText().toString();
             carCompany = inputCompany.getText().toString();
@@ -84,6 +89,11 @@ public class CarRegisterActivity extends AppCompatActivity {
             carPrice = Integer.parseInt(inputPrice.getText().toString());
             carType = inputType.getText().toString();
             carYear = Integer.parseInt(inputYear.getText().toString());
+
+            if(carColor.isEmpty() || carCompany.isEmpty() || carFuel.isEmpty() || carName.isEmpty() || carNumber.isEmpty() || carType.isEmpty()){
+                Toast.makeText(getApplicationContext(), "차량 정보를 모두 입력해주세요.", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             boolean isAccident = false;
             boolean isTune = false;
