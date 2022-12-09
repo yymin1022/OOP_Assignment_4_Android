@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="search_slider_price_value">
+        <item>1500.0</item>
+        <item>3500.0</item>
+    </array>
+</resources>
