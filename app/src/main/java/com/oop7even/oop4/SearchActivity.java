@@ -1,10 +1,8 @@
 package com.oop7even.oop4;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -12,7 +10,6 @@ import android.widget.RadioGroup;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
-import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.slider.RangeSlider;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.oop7even.oop4.Model.Car;
@@ -32,7 +29,7 @@ public class SearchActivity extends AppCompatActivity {
     int carYearMin = 0;
     String carCompany = "";
     String carFuel = "All";
-    String carModel = "";
+    String carName = "";
     String carType = "All";
 
     MaterialButton btnSearch;
@@ -76,7 +73,7 @@ public class SearchActivity extends AppCompatActivity {
 
     View.OnClickListener btnListener = v -> {
         carCompany = inputCompany.getText().toString();
-        carModel = inputName.getText().toString();
+        carName = inputName.getText().toString();
 
         ArrayList<Car> resultCar = new ArrayList<>();
     };
@@ -86,16 +83,16 @@ public class SearchActivity extends AppCompatActivity {
         public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
             switch(checkedId){
                 case R.id.search_toggle_type_all:
-                    carFuel = "All";
+                    carType = "All";
                     break;
                 case R.id.search_toggle_type_car:
-                    carFuel = "Car";
+                    carType = "Car";
                     break;
                 case R.id.search_toggle_type_truck:
-                    carFuel = "Truck";
+                    carType = "Truck";
                     break;
                 case R.id.search_toggle_type_bus:
-                    carFuel = "Bus";
+                    carType = "Bus";
                     break;
             }
         }
