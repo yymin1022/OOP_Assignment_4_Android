@@ -6,7 +6,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.oop7even.oop4.Model.Accident;
 import com.oop7even.oop4.Model.Car;
@@ -93,6 +92,8 @@ public class CarRegisterActivity extends AppCompatActivity {
             if(isTune){
                 newCar.addTune(tmpTune);
             }
+
+            // Upload to Firebase
         }
     };
 
