@@ -5,6 +5,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -122,18 +123,18 @@ public class SearchActivity extends AppCompatActivity {
     };
 
     RangeSlider.OnChangeListener distanceListener = (slider, value, fromUser) -> {
-        carDistanceMax = (int)slider.getValueTo();
-        carDistanceMin = (int)slider.getValueFrom();
+        carDistanceMax = Math.round(slider.getValues().get(1));
+        carDistanceMin = Math.round(slider.getValues().get(0));
     };
 
     RangeSlider.OnChangeListener priceListener = (slider, value, fromUser) -> {
-        carPriceMax = (int)slider.getValueTo();
-        carPriceMin = (int)slider.getValueFrom();
+        carPriceMax = Math.round(slider.getValues().get(1));
+        carPriceMin = Math.round(slider.getValues().get(0));
     };
 
     RangeSlider.OnChangeListener yearListener = (slider, value, fromUser) -> {
-        carYearMax = (int)slider.getValueTo();
-        carYearMin = (int)slider.getValueFrom();
+        carYearMax = Math.round(slider.getValues().get(1));
+        carYearMin = Math.round(slider.getValues().get(0));
     };
 
     CompoundButton.OnCheckedChangeListener accidentListener = (buttonView, isChecked) -> {
