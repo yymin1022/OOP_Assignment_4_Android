@@ -3,6 +3,7 @@ package com.oop7even.oop4;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -77,7 +78,10 @@ public class SearchActivity extends AppCompatActivity {
         carName = inputName.getText().toString();
 
         ArrayList<Car> resultCar = findCar(carName, carCompany, carType, carPriceMax, carPriceMin, carDistanceMax, carDistanceMin, carYearMax, carYearMin, carFuel, carIsAccident, carIsTune);
-        Toast.makeText(getApplicationContext(), String.valueOf(resultCar.size()), Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
+        intent.putExtra("car", resultCar);
+        startActivity(intent);
     };
 
     MaterialButtonToggleGroup.OnButtonCheckedListener typeListener = (group, checkedId, isChecked) -> {
