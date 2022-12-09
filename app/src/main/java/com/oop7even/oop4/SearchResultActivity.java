@@ -23,8 +23,8 @@ public class SearchResultActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
 
-        Toolbar mainToolbar = findViewById(R.id.main_toolbar);
-        setSupportActionBar(mainToolbar);
+        Toolbar resultToolbar = findViewById(R.id.result_toolbar);
+        setSupportActionBar(resultToolbar);
 
         carList = (ArrayList<Car>)getIntent().getSerializableExtra("car");
 

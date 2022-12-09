@@ -1,6 +1,7 @@
 package com.oop7even.oop4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -20,6 +21,9 @@ public class UserInfoActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
+
+        Toolbar infoToolbar = findViewById(R.id.info_toolbar);
+        setSupportActionBar(infoToolbar);
 
         carList = (ArrayList<Car>)getIntent().getSerializableExtra("car");
         user = (User)getIntent().getSerializableExtra("user");
