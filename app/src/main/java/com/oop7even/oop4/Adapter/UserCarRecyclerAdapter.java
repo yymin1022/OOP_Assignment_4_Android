@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,6 +52,7 @@ public class UserCarRecyclerAdapter extends RecyclerView.Adapter<UserCarRecycler
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
+        ImageView ivCar;
         TextView tvCompany;
         TextView tvFuel;
         TextView tvName;
@@ -59,6 +61,7 @@ public class UserCarRecyclerAdapter extends RecyclerView.Adapter<UserCarRecycler
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            ivCar = itemView.findViewById(R.id.recycle_user_image_car);
             tvCompany = itemView.findViewById(R.id.recycle_user_tv_manufacture);
             tvFuel = itemView.findViewById(R.id.recycle_user_tv_fuel);
             tvName = itemView.findViewById(R.id.recycle_user_tv_name);
