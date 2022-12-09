@@ -78,46 +78,40 @@ public class SearchActivity extends AppCompatActivity {
         ArrayList<Car> resultCar = new ArrayList<>();
     };
 
-    MaterialButtonToggleGroup.OnButtonCheckedListener typeListener = new MaterialButtonToggleGroup.OnButtonCheckedListener() {
-        @Override
-        public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-            switch(checkedId){
-                case R.id.search_toggle_type_all:
-                    carType = "All";
-                    break;
-                case R.id.search_toggle_type_car:
-                    carType = "Car";
-                    break;
-                case R.id.search_toggle_type_truck:
-                    carType = "Truck";
-                    break;
-                case R.id.search_toggle_type_bus:
-                    carType = "Bus";
-                    break;
-            }
+    MaterialButtonToggleGroup.OnButtonCheckedListener typeListener = (group, checkedId, isChecked) -> {
+        switch(checkedId){
+            case R.id.search_toggle_type_all:
+                carType = "All";
+                break;
+            case R.id.search_toggle_type_car:
+                carType = "Car";
+                break;
+            case R.id.search_toggle_type_truck:
+                carType = "Truck";
+                break;
+            case R.id.search_toggle_type_bus:
+                carType = "Bus";
+                break;
         }
     };
 
-    RadioGroup.OnCheckedChangeListener fuelListener = new RadioGroup.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(RadioGroup group, int checkedId) {
-            switch(checkedId){
-                case R.id.search_radio_fuel_all:
-                    carFuel = "All";
-                    break;
-                case R.id.search_radio_fuel_gasoline:
-                    carFuel = "Gasoline";
-                    break;
-                case R.id.search_radio_fuel_diesel:
-                    carFuel = "Diesel";
-                    break;
-                case R.id.search_radio_fuel_lpg:
-                    carFuel = "LPG";
-                    break;
-                case R.id.search_radio_fuel_elec:
-                    carFuel = "Electric";
-                    break;
-            }
+    RadioGroup.OnCheckedChangeListener fuelListener = (group, checkedId) -> {
+        switch(checkedId){
+            case R.id.search_radio_fuel_all:
+                carFuel = "All";
+                break;
+            case R.id.search_radio_fuel_gasoline:
+                carFuel = "Gasoline";
+                break;
+            case R.id.search_radio_fuel_diesel:
+                carFuel = "Diesel";
+                break;
+            case R.id.search_radio_fuel_lpg:
+                carFuel = "LPG";
+                break;
+            case R.id.search_radio_fuel_elec:
+                carFuel = "Electric";
+                break;
         }
     };
 
