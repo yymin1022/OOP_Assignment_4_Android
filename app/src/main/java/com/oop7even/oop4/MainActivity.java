@@ -59,14 +59,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     View.OnClickListener onBtnListener = v -> {
+        Intent intent;
         switch(v.getId()){
             case R.id.main_btn_register:
-                Intent intent = new Intent(getApplicationContext(), CarRegisterActivity.class);
+                intent = new Intent(getApplicationContext(), CarRegisterActivity.class);
                 intent.putExtra("car", carList);
                 startActivity(intent);
                 break;
             case R.id.main_btn_search:
-                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                intent = new Intent(getApplicationContext(), SearchActivity.class);
+                intent.putExtra("car", carList);
+                startActivity(intent);
                 break;
         }
     };
