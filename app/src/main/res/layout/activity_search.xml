@@ -36,7 +36,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="차종"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -45,6 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/search_toggle_type"
+                    android:checkedButton="@id/search_toggle_type_all"
                     app:singleSelection="true">
                     <Button
                         android:layout_width="wrap_content"

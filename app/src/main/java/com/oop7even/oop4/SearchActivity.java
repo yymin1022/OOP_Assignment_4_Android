@@ -87,7 +87,7 @@ public class SearchActivity extends AppCompatActivity {
                     break;
             }
         }
-    }
+    };
 
     RadioGroup.OnCheckedChangeListener fuelListener = new RadioGroup.OnCheckedChangeListener() {
         @Override
@@ -110,7 +110,7 @@ public class SearchActivity extends AppCompatActivity {
                     break;
             }
         }
-    }
+    };
 
     RangeSlider.OnChangeListener distanceListener = (slider, value, fromUser) -> {
         carDistanceMax = (int)slider.getValueTo();
