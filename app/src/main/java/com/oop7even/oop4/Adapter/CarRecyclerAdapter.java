@@ -54,13 +54,13 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull CarRecyclerAdapter.ViewHolder holder, int position){
-        String carDist = String.valueOf(carData.get(position).getDistanceDriven());
-        String carPrice = String.valueOf(carData.get(position).getPrice());
-        String carYear = String.valueOf(carData.get(position).getYear());
         String carColor = carData.get(position).getColor();
+        String carDist = String.valueOf(carData.get(position).getDistanceDriven());
         String carFuel = carData.get(position).getFuel();
         String carManufacture = carData.get(position).getManufacture();
         String carName = carData.get(position).getName();
+        String carPrice = String.valueOf(carData.get(position).getPrice());
+        String carYear = String.valueOf(carData.get(position).getYear());
 
         holder.tvCarColor.setText(carColor);
         holder.tvCarDist.setText(carDist);
