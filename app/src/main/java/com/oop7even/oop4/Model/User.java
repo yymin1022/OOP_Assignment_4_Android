@@ -8,7 +8,7 @@ public class User implements Serializable {
 
     private String userName;
     private boolean isSeller;
-    protected ArrayList<Car> Cars = new ArrayList<>();
+    protected static ArrayList<Car> Cars = new ArrayList<>();
 
     public User(String name, boolean isSeller){
         this.userName = name;
@@ -16,27 +16,60 @@ public class User implements Serializable {
     }
 
     // for Seller
-    public void addCar(Car newCar){
-        Cars.add(newCar);
-        // 신규 판매 차량 등록, 차량 리스트에 새로운 차량 추가
-        // 파일 입출력을 통해 판매 차량 명단 txt 파일에 차량에 대한 정보 추가
-        // 파일 내용 로직 상에서 갱신하는 과정 필요
+    public boolean addCar(Car newCar){
+        if(isSeller){
+            for (Car car : Cars) { //이미 등록된 차량인지 확인
+                if (car.getNumber().equals(newCar.getNumber())) {
+                    System.out.println("이미 등록한 차량입니다.");
+                    return false; //이미 등록한 차량일 경우 False
+                }
+            }
+            try {
+                Cars.add(newCar);
+                System.out.println("성공적으로 등록했습니다.");
+                return true; //정상적으로 등록된 경우 True
+            } catch (Exception e) {
+                e.printStackTrace(); //혹시 모를 exception
+            }
+        }else{
+            System.out.println("판매자 계정이 아닙니다.");
+            return false; //판매자 계정이 아니면 false
+        }
+        return false; //기본값 false
     }
 
     // for Customer
-    public void buyCar(Car car, User seller){
-        Cars.add(car);
-        seller.Cars.remove(car);
-
-        // 차량 구매, myCar 리스트에 이 차량 추가
-        // 주인이 등록되었기에 기존 Car 리스트에서 차량 제거
-        // 알림 메시지 등 필요
-        // 파일 입출력으로 user의 차량 txt 파일에 이 차량에 대한 데이터를 이어붙이면서, 판매 차량 명단 txt 파일에 이 차량에 대한 데이터를 삭제
-        // 파일 내용 로직 상에서 갱신하는 과정 필요
+    public boolean buyCar(Car targetCar, User seller){ //정상적으로 구매가 이루어졌는지 반환
+        if(!isSeller){
+            for (Car car : Cars) {
+                if (car.getNumber().equals(targetCar.getNumber())) {
+                    System.out.println("이미 구매한 차량입니다");
+                    return false; //이미 구매한 차량이면 false
+                }
+            }
+            try {
+                for(int i= 0 ;i < seller.getCarList().size(); i++) {
+                    if (seller.getCarList().get(i).getNumber().equals(targetCar.getNumber())) {
+                        Cars.add(targetCar);
+                        seller.getCarList().remove(targetCar);
+                        System.out.println("성공적으로 구매했습니다.");
+                        return true; //정상적으로 구매한 경우 true
+                    }
+                }
+                System.out.println("해당 차량이 존재하지 않습니다.");
+                return false; //끝까지 스캔했는데도 차량이 나오지 않으면 false
+            }catch (Exception e){
+                e.printStackTrace(); //혹시 모를 exception
+            }
+        }else{
+            System.out.println("판매자 계정으로 로그인한 상태입니다. 다른 계정으로 로그인해주세요.");
+            return false; //seller 계정이면 false
+        }
+        return false; //기본값은 false
     }
 
-    public ArrayList<Car> getCarList(){
-        return this.Cars;
+    public static ArrayList<Car> getCarList(){
+        return Cars;
     }
 
     public boolean getIsSeller(){
