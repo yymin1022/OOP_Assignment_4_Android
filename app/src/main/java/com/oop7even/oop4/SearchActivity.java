@@ -77,7 +77,7 @@ public class SearchActivity extends AppCompatActivity {
         carName = inputName.getText().toString();
 
         ArrayList<Car> resultCar = findCar(carName, carCompany, carType, carPriceMax, carPriceMin, carDistanceMax, carDistanceMin, carYearMax, carYearMin, carFuel, carIsAccident, carIsTune);
-        Toast.makeText(getApplicationContext(), resultCar.size(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), String.valueOf(resultCar.size()), Toast.LENGTH_SHORT).show();
     };
 
     MaterialButtonToggleGroup.OnButtonCheckedListener typeListener = (group, checkedId, isChecked) -> {
