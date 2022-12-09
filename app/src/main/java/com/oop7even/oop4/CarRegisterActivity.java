@@ -13,8 +13,6 @@ import com.oop7even.oop4.Model.Car;
 import com.oop7even.oop4.Model.Tune;
 import com.oop7even.oop4.Model.User;
 
-import java.util.ArrayList;
-
 public class CarRegisterActivity extends AppCompatActivity {
     User user;
 
