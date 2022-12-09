@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
         switch(item.getItemId()){
             case R.id.toolbar_menu_info:
+                Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
+                intent.putExtra("car", carList);
+                intent.putExtra("user", user);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
