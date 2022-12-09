@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -76,6 +77,7 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
+        ImageView ivCarImage;
         TextView tvCarColor;
         TextView tvCarDist;
         TextView tvCarFuel;
@@ -87,6 +89,7 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
         ViewHolder(View itemView){
             super(itemView);
 
+            ivCarImage = itemView.findViewById(R.id.recycle_image_car);
             tvCarColor = itemView.findViewById(R.id.recycle_tv_color);
             tvCarDist = itemView.findViewById(R.id.recycle_tv_dist);
             tvCarFuel = itemView.findViewById(R.id.recycle_tv_fuel);
