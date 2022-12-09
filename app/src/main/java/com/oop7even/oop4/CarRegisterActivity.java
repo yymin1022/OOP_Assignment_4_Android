@@ -65,6 +65,11 @@ public class CarRegisterActivity extends AppCompatActivity {
         inputType = findViewById(R.id.register_input_type);
         inputYear = findViewById(R.id.register_input_year);
 
+        inputAccidentContent = findViewById(R.id.register_input_accident_content);
+        inputAccidentDate = findViewById(R.id.register_input_accident_date);
+        inputTuneContent = findViewById(R.id.register_input_tune_content);
+        inputTuneDate = findViewById(R.id.register_input_tune_date);
+
         btnRegister.setOnClickListener(btnListener);
     }
 
@@ -86,11 +91,11 @@ public class CarRegisterActivity extends AppCompatActivity {
             boolean isTune = false;
             Accident tmpAccident = new Accident("", "");
             Tune tmpTune = new Tune("", "");
-            if(inputAccidentContent.getText().length() > 0 && inputAccidentDate.getText().length() > 0){
+            if(inputAccidentContent.getText() != null && inputAccidentDate.getText() != null){
                 isAccident = true;
                 tmpAccident = new Accident(inputAccidentDate.getText().toString(), inputAccidentContent.getText().toString());
             }
-            if(inputTuneContent.getText().length() > 0 && inputTuneDate.getText().length() > 0){
+            if(inputTuneContent.getText() != null && inputTuneDate.getText() != null){
                 isTune = true;
                 tmpTune = new Tune(inputTuneDate.getText().toString(), inputTuneContent.getText().toString());
             }
@@ -106,6 +111,7 @@ public class CarRegisterActivity extends AppCompatActivity {
             if(user.addCar(newCar)){
                 Toast.makeText(getApplicationContext(), "차량이 등록되었습니다.", Toast.LENGTH_SHORT).show();
                 // Upload to Firebase
+                finish();
             }else{
                 Toast.makeText(getApplicationContext(), "차량을 등록하지 못했습니다.", Toast.LENGTH_SHORT).show();
             }
