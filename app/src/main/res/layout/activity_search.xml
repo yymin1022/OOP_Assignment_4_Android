@@ -130,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:valueFrom="0.0"
                     android:valueTo="300.0"
-                    android:stepSize="0.0"
+                    android:stepSize="10.0"
                     app:labelBehavior="visible"
                     app:values="@array/search_slider_distance_value"
                     android:id="@+id/search_slider_distance"/>
@@ -156,6 +156,16 @@
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
+
+                <com.google.android.material.slider.RangeSlider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:valueFrom="1990.0"
+                    android:valueTo="2022.0"
+                    android:stepSize="1.0"
+                    app:labelBehavior="visible"
+                    app:values="@array/search_slider_year_value"
+                    android:id="@+id/search_slider_year"/>
 
             </LinearLayout>
 
