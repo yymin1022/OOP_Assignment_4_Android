@@ -1,5 +1,6 @@
 package com.oop7even.oop4;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -56,5 +57,24 @@ public class SearchActivity extends AppCompatActivity {
         sliderYear = findViewById(R.id.search_slider_year);
         switchAccident = findViewById(R.id.search_switch_accident);
         switchTune = findViewById(R.id.search_switch_tune);
+
+        sliderDistance.addOnChangeListener(distanceListener);
+        sliderPrice.addOnChangeListener(priceListener);
+        sliderYear.addOnChangeListener(yearListener);
     }
+
+    RangeSlider.OnChangeListener distanceListener = (slider, value, fromUser) -> {
+        carDistanceMax = (int)slider.getValueTo();
+        carDistanceMin = (int)slider.getValueFrom();
+    };
+
+    RangeSlider.OnChangeListener priceListener = (slider, value, fromUser) -> {
+        carPriceMax = (int)slider.getValueTo();
+        carPriceMin = (int)slider.getValueFrom();
+    };
+
+    RangeSlider.OnChangeListener yearListener = (slider, value, fromUser) -> {
+        carYearMax = (int)slider.getValueTo();
+        carYearMin = (int)slider.getValueFrom();
+    };
 }
