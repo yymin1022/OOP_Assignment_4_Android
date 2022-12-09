@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.google.android.material.button.MaterialButtonToggleGroup;
+import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.slider.RangeSlider;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.oop7even.oop4.Model.Car;
@@ -18,8 +20,8 @@ import java.util.ArrayList;
 public class SearchActivity extends AppCompatActivity {
     ArrayList<Car> carList;
 
-    boolean isAccident = false;
-    boolean isTune = false;
+    boolean carIsAccident = false;
+    boolean carIsTune = false;
     int carDistanceMax = 300000;
     int carDistanceMin = 0;
     int carPriceMax = 5000;
@@ -61,6 +63,8 @@ public class SearchActivity extends AppCompatActivity {
         sliderDistance.addOnChangeListener(distanceListener);
         sliderPrice.addOnChangeListener(priceListener);
         sliderYear.addOnChangeListener(yearListener);
+        switchAccident.setOnCheckedChangeListener(accidentListener);
+        switchTune.setOnCheckedChangeListener(tuneListener);
     }
 
     RangeSlider.OnChangeListener distanceListener = (slider, value, fromUser) -> {
@@ -76,5 +80,13 @@ public class SearchActivity extends AppCompatActivity {
     RangeSlider.OnChangeListener yearListener = (slider, value, fromUser) -> {
         carYearMax = (int)slider.getValueTo();
         carYearMin = (int)slider.getValueFrom();
+    };
+
+    CompoundButton.OnCheckedChangeListener accidentListener = (buttonView, isChecked) -> {
+        carIsAccident = isChecked;
+    };
+
+    CompoundButton.OnCheckedChangeListener tuneListener = (buttonView, isChecked) -> {
+        carIsTune = isChecked;
     };
 }
