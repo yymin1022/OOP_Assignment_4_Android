@@ -59,7 +59,7 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
         String carColor = carData.get(position).getColor();
         String carDist = String.valueOf(carData.get(position).getDistanceDriven());
         String carFuel = carData.get(position).getFuel();
-//        String carImage = carData.get(position).getImage();
+        String carImage = carData.get(position).getCarImage();
         String carManufacture = carData.get(position).getManufacture();
         String carName = carData.get(position).getName();
         String carPrice = String.valueOf(carData.get(position).getPrice());
