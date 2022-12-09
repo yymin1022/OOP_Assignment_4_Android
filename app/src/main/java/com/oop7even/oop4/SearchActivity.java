@@ -60,12 +60,33 @@ public class SearchActivity extends AppCompatActivity {
         switchAccident = findViewById(R.id.search_switch_accident);
         switchTune = findViewById(R.id.search_switch_tune);
 
+        toggleType.addOnButtonCheckedListener(typeListener);
         radioFuel.setOnCheckedChangeListener(fuelListener);
         sliderDistance.addOnChangeListener(distanceListener);
         sliderPrice.addOnChangeListener(priceListener);
         sliderYear.addOnChangeListener(yearListener);
         switchAccident.setOnCheckedChangeListener(accidentListener);
         switchTune.setOnCheckedChangeListener(tuneListener);
+    }
+
+    MaterialButtonToggleGroup.OnButtonCheckedListener typeListener = new MaterialButtonToggleGroup.OnButtonCheckedListener() {
+        @Override
+        public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
+            switch(checkedId){
+                case R.id.search_toggle_type_all:
+                    carFuel = "All";
+                    break;
+                case R.id.search_toggle_type_car:
+                    carFuel = "Car";
+                    break;
+                case R.id.search_toggle_type_truck:
+                    carFuel = "Truck";
+                    break;
+                case R.id.search_toggle_type_bus:
+                    carFuel = "Bus";
+                    break;
+            }
+        }
     }
 
     RadioGroup.OnCheckedChangeListener fuelListener = new RadioGroup.OnCheckedChangeListener() {
