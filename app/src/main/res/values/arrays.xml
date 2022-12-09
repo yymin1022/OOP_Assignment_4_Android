@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <array name="search_slider_distance_value">
+        <item>0.0</item>
+        <item>300.0</item>
+    </array>
     <array name="search_slider_price_value">
         <item>0.0</item>
         <item>5000.0</item>

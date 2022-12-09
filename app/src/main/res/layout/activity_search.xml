@@ -100,7 +100,8 @@
                     android:valueTo="5000.0"
                     android:stepSize="100.0"
                     app:labelBehavior="visible"
-                    app:values="@array/search_slider_price_value"  />
+                    app:values="@array/search_slider_price_value"
+                    android:id="@+id/search_slider_price"/>
 
             </LinearLayout>
 
@@ -123,6 +124,16 @@
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
+
+                <com.google.android.material.slider.RangeSlider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:valueFrom="0.0"
+                    android:valueTo="300.0"
+                    android:stepSize="0.0"
+                    app:labelBehavior="visible"
+                    app:values="@array/search_slider_distance_value"
+                    android:id="@+id/search_slider_distance"/>
 
             </LinearLayout>
 
