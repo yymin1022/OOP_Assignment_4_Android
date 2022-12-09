@@ -1,6 +1,7 @@
 package com.oop7even.oop4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,6 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.slider.RangeSlider;
 import com.google.android.material.switchmaterial.SwitchMaterial;
@@ -33,7 +33,7 @@ public class SearchActivity extends AppCompatActivity {
     String carName = "";
     String carType = "All";
 
-    MaterialButton btnSearch;
+    AppCompatButton btnSearch;
     EditText inputCompany;
     EditText inputName;
     MaterialButtonToggleGroup toggleType;
