@@ -1,4 +1,68 @@
 package com.oop7even.oop4.Adapter;
 
-public class UserCarRecyclerAdapter{
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.oop7even.oop4.Model.Car;
+import com.oop7even.oop4.R;
+
+import java.util.ArrayList;
+
+public class UserCarRecyclerAdapter extends RecyclerView.Adapter<UserCarRecyclerAdapter.ViewHolder>{
+    private ArrayList<Car> carList;
+
+    public UserCarRecyclerAdapter(ArrayList<Car> carList){
+        this.carList = carList;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+        Context context = parent.getContext();
+        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View view = inflater.inflate(R.layout.recycler_item_user_car, parent, false);
+
+        return new UserCarRecyclerAdapter.ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position){
+        String carCompany = carList.get(position).getManufacture();
+        String carFuel = carList.get(position).getFuel();
+        String carName = carList.get(position).getName();
+        String carPrice = String.valueOf(carList.get(position).getPrice());
+
+        holder.tvCompany.setText(carCompany);
+        holder.tvFuel.setText(carFuel);
+        holder.tvName.setText(carName);
+        holder.tvPrice.setText(carPrice);
+    }
+
+    @Override
+    public int getItemCount() {
+        return carList.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder{
+        TextView tvCompany;
+        TextView tvFuel;
+        TextView tvName;
+        TextView tvPrice;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            tvCompany = itemView.findViewById(R.id.recycle_user_tv_manufacture);
+            tvFuel = itemView.findViewById(R.id.recycle_user_tv_fuel);
+            tvName = itemView.findViewById(R.id.recycle_user_tv_name);
+            tvPrice = itemView.findViewById(R.id.recycle_user_tv_price);
+        }
+    }
 }
