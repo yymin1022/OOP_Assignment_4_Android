@@ -37,7 +37,7 @@ public class UserCarRecyclerAdapter extends RecyclerView.Adapter<UserCarRecycler
     public void onBindViewHolder(@NonNull ViewHolder holder, int position){
         String carCompany = carList.get(position).getManufacture();
         String carFuel = carList.get(position).getFuel();
-//        String carImage = carData.get(position).getImage();
+        String carImage = carList.get(position).getCarImage();
         String carName = carList.get(position).getName();
         String carPrice = String.valueOf(carList.get(position).getPrice());
 
