@@ -24,6 +24,7 @@ public class CarDetailActivity extends AppCompatActivity{
     TextView tvCarName;
     TextView tvCarNumber;
     TextView tvCarPrice;
+    TextView tvCarType;
     TextView tvCarYear;
 
     RecyclerView recyclerAccident;
@@ -47,6 +48,7 @@ public class CarDetailActivity extends AppCompatActivity{
         tvCarNumber = findViewById(R.id.detail_tv_number);
         tvCarName = findViewById(R.id.detail_tv_name);
         tvCarPrice = findViewById(R.id.detail_tv_price);
+        tvCarType = findViewById(R.id.detail_tv_type);
         tvCarYear = findViewById(R.id.detail_tv_year);
 
         recyclerAccident = findViewById(R.id.detail_recycler_accident);
@@ -66,6 +68,7 @@ public class CarDetailActivity extends AppCompatActivity{
         tvCarName.setText(car.getName());
         tvCarNumber.setText(car.getNumber());
         tvCarPrice.setText(String.valueOf(car.getPrice()));
+        tvCarType.setText(car.getType());
         tvCarYear.setText(String.valueOf(car.getYear()));
 
         if(car.getIsAccident()){
