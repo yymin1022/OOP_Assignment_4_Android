@@ -136,8 +136,8 @@
                             android:id="@+id/register_input_year"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:maxLength="21" />
+                            android:inputType="numberDecimal"
+                            android:maxLength="4" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -208,7 +208,7 @@
                             android:id="@+id/register_input_distance"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text"
+                            android:inputType="numberDecimal"
                             android:maxLength="21" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -222,7 +222,7 @@
                             android:id="@+id/register_input_capacity"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text"
+                            android:inputType="numberDecimal"
                             android:maxLength="21" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -236,7 +236,7 @@
                             android:id="@+id/register_input_price"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text"
+                            android:inputType="numberDecimal"
                             android:maxLength="21" />
                     </com.google.android.material.textfield.TextInputLayout>
 
