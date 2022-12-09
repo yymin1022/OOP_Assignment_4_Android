@@ -346,6 +346,19 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_700"
+                android:text="등록하기"
+                android:textColor="@color/white"
+                android:id="@+id/register_btn_register"  />
+
         </LinearLayout>
 
     </ScrollView>
