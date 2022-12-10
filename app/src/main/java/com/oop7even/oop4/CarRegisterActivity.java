@@ -6,6 +6,8 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.oop7even.oop4.Model.Accident;
@@ -39,6 +41,9 @@ public class CarRegisterActivity extends AppCompatActivity {
     EditText inputType;
     EditText inputYear;
 
+    ImageView imageCar;
+    LinearLayout layoutImageCar;
+
     EditText inputAccidentContent;
     EditText inputAccidentDate;
     EditText inputTuneContent;
@@ -63,12 +68,16 @@ public class CarRegisterActivity extends AppCompatActivity {
         inputType = findViewById(R.id.register_input_type);
         inputYear = findViewById(R.id.register_input_year);
 
+        imageCar = findViewById(R.id.register_image_car);
+        layoutImageCar = findViewById(R.id.register_layout_image);
+
         inputAccidentContent = findViewById(R.id.register_input_accident_content);
         inputAccidentDate = findViewById(R.id.register_input_accident_date);
         inputTuneContent = findViewById(R.id.register_input_tune_content);
         inputTuneDate = findViewById(R.id.register_input_tune_date);
 
         btnRegister.setOnClickListener(btnListener);
+        layoutImageCar.setOnClickListener(imageListener);
     }
 
     View.OnClickListener btnListener = new View.OnClickListener() {
@@ -123,6 +132,13 @@ public class CarRegisterActivity extends AppCompatActivity {
             }else{
                 Toast.makeText(getApplicationContext(), "차량을 등록하지 못했습니다.", Toast.LENGTH_SHORT).show();
             }
+        }
+    };
+
+    View.OnClickListener imageListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            
         }
     };
 }
