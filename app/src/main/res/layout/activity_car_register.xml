@@ -37,11 +37,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <View
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@color/gray" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -72,10 +67,10 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <View
+                    <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@color/gray" />
+                        android:src="@drawable/ic_car" />
 
                 </LinearLayout>
 
@@ -172,10 +167,10 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <View
+                    <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@color/gray" />
+                        android:src="@drawable/ic_info" />
 
                 </LinearLayout>
 
@@ -272,10 +267,10 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <View
+                    <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@color/gray" />
+                        android:src="@drawable/ic_car_accident" />
 
                 </LinearLayout>
 
@@ -330,10 +325,10 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <View
+                    <ImageView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:background="@color/gray" />
+                        android:src="@drawable/ic_car_tune" />
 
                 </LinearLayout>
 
