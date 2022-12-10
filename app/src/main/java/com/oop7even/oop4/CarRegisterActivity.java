@@ -26,6 +26,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.oop7even.oop4.Model.Accident;
 import com.oop7even.oop4.Model.Car;
@@ -190,7 +191,8 @@ public class CarRegisterActivity extends AppCompatActivity {
                 carInfo.put("type", carType);
                 carInfo.put("year", carYear);
                 carInfo.put("isAccident", isAccident);
-                carInfo.put("isTune", isTune);
+                carInfo.put("isTuned", isTune);
+                carInfo.put("isSold", false);
 
                 
                 if(isAccident){
@@ -216,6 +218,7 @@ public class CarRegisterActivity extends AppCompatActivity {
                 }
 
                 db.collection("Car").document(carNumber).set(carInfo);
+                db.collection("User").document(user.getName()).update("car_owned", FieldValue.arrayUnion(carNumber));
 
                 Toast.makeText(getApplicationContext(), "차량이 등록되었습니다.", Toast.LENGTH_SHORT).show();
 
