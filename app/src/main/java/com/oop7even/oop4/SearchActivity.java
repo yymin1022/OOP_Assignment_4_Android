@@ -5,6 +5,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -84,19 +85,21 @@ public class SearchActivity extends AppCompatActivity {
     };
 
     MaterialButtonToggleGroup.OnButtonCheckedListener typeListener = (group, checkedId, isChecked) -> {
-        switch(checkedId){
-            case R.id.search_toggle_type_all:
-                carType = "전체";
-                break;
-            case R.id.search_toggle_type_car:
-                carType = "승용";
-                break;
-            case R.id.search_toggle_type_truck:
-                carType = "화물";
-                break;
-            case R.id.search_toggle_type_bus:
-                carType = "버스";
-                break;
+        if(isChecked){
+            switch (checkedId) {
+                case R.id.search_toggle_type_all:
+                    carType = "전체";
+                    break;
+                case R.id.search_toggle_type_car:
+                    carType = "승용";
+                    break;
+                case R.id.search_toggle_type_truck:
+                    carType = "화물";
+                    break;
+                case R.id.search_toggle_type_bus:
+                    carType = "버스";
+                    break;
+            }
         }
     };
 
