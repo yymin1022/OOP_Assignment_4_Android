@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -16,14 +15,10 @@ import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.oop7even.oop4.Model.Accident;
-import com.oop7even.oop4.Model.Car;
-import com.oop7even.oop4.Model.Tune;
 import com.oop7even.oop4.Model.User;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
     boolean isSeller = false;
@@ -33,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText inputID;
     EditText inputPW;
 
-    ArrayList<Car> carList = new ArrayList<>();
     User user = new User("", true);
 
     FirebaseFirestore db;
@@ -122,9 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                             if(document.getId().equals(userName)){
                                 isSeller = (boolean)document.getData().get("isSeller");
 
-                                for(String carNumber : (ArrayList<String>)document.getData().get("car_owned")){
-                                    carNumberList.add(carNumber);
-                                }
+                                carNumberList.addAll((ArrayList<String>)Objects.requireNonNull(document.getData().get("car_owned")));
                                 break;
                             }
                         }
