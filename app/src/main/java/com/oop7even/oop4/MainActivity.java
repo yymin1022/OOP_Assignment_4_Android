@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(resultIntent != null){
                     isSeller = resultIntent.getBooleanExtra("isSeller", false);
+                    carList = (ArrayList<Car>) resultIntent.getSerializableExtra("car");
                     user = (User) resultIntent.getSerializableExtra("user");
                     Toast.makeText(getApplicationContext(), isSeller ? "Seller : " : "Customer : " + user.getName(), Toast.LENGTH_SHORT).show();
 
@@ -121,8 +122,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void setupUI(){
-        carList = user.getCarList();
-
         CarRecyclerAdapter carAdapter = new CarRecyclerAdapter(carList);
 
         btnRegister.setVisibility(isSeller ? View.VISIBLE : View.INVISIBLE);
