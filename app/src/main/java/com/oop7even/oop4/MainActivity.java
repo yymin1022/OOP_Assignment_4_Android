@@ -11,12 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -28,6 +26,7 @@ import com.oop7even.oop4.Model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     boolean isLoggedIn = false;
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(carNumberList.size() > 0){
             carList.clear();
-            initUserCars(carNumberList);
+            initCarList(carNumberList);
         }
     }
 
@@ -86,15 +85,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        switch(item.getItemId()){
-            case R.id.toolbar_menu_info:
-                Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
-                intent.putExtra("carList", user.getCarList());
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if(item.getItemId() == R.id.toolbar_menu_info){
+            Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
+            intent.putExtra("carList", user.getCarList());
+            startActivity(intent);
+            return true;
         }
+
+        return super.onOptionsItemSelected(item);
     }
 
     View.OnClickListener onBtnListener = v -> {
@@ -152,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    void initUserCars(ArrayList<String> carNumberList){
+    void initCarList(ArrayList<String> carNumberList){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Car")
                 .get()
@@ -165,10 +163,10 @@ public class MainActivity extends AppCompatActivity {
                             String color = (String)document.getData().get("color");
                             String type = (String)document.getData().get("type");
                             String image = (String)document.getData().get("img");
-                            int price = ((Long)document.getData().get("price")).intValue();
-                            int capacity = ((Long)document.getData().get("capacity")).intValue();
-                            int distanceDriven = ((Long)document.getData().get("distanceDriven")).intValue();
-                            int year = ((Long)document.getData().get("year")).intValue();
+                            int price = ((Long)Objects.requireNonNull(document.getData().get("price"))).intValue();
+                            int capacity = ((Long)Objects.requireNonNull(document.getData().get("capacity"))).intValue();
+                            int distanceDriven = ((Long)Objects.requireNonNull(document.getData().get("distanceDriven"))).intValue();
+                            int year = ((Long)Objects.requireNonNull(document.getData().get("year"))).intValue();
                             String fuel = (String)document.getData().get("fuel");
                             boolean isAccident = (boolean)document.getData().get("isAccident");
                             boolean isTuned = (boolean)document.getData().get("isTuned");
@@ -179,14 +177,14 @@ public class MainActivity extends AppCompatActivity {
                             if(isAccident){
                                 HashMap<String, HashMap<String, String>> accidentData = (HashMap<String, HashMap<String, String>>)document.getData().get("accidentData");
                                 for(int idx = 1; idx < ((HashMap<?, ?>) document.getData().get("accidentData")).size(); idx++){
-                                    tmpCar.addAccident(new Accident(accidentData.get(String.format("data%d", idx)).get("date"), accidentData.get(String.format("data%d", idx)).get("content")));
+                                    tmpCar.addAccident(new Accident(accidentData.get(String.format("data%d", idx)).get("date"), Objects.requireNonNull(accidentData.get(String.format("data%d", idx))).get("content")));
                                 }
                             }
 
                             if(isTuned){
                                 HashMap<String, HashMap<String, String>> tuneData = (HashMap<String, HashMap<String, String>>)document.getData().get("tuneData");
                                 for(int idx = 1; idx < ((HashMap<?, ?>) document.getData().get("tuneData")).size(); idx++){
-                                    tmpCar.addTune(new Tune(tuneData.get(String.format("data%d", idx)).get("date"), tuneData.get(String.format("data%d", idx)).get("content")));
+                                    tmpCar.addTune(new Tune(tuneData.get(String.format("data%d", idx)).get("date"), Objects.requireNonNull(tuneData.get(String.format("data%d", idx))).get("content")));
                                 }
                             }
 
