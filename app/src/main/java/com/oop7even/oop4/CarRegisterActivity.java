@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.oop7even.oop4.Model.Accident;
 import com.oop7even.oop4.Model.Car;
 import com.oop7even.oop4.Model.Tune;
@@ -138,7 +139,11 @@ public class CarRegisterActivity extends AppCompatActivity {
     View.OnClickListener imageListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            
+            ImagePicker.with(CarRegisterActivity.this)
+                    .crop()
+                    .compress(1024)
+                    .maxResultSize(1280, 720)
+                    .start();
         }
     };
 }
