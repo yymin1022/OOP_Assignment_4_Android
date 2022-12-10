@@ -5,6 +5,8 @@ local.properties
 .idea/
 build/
 captures/
+app/release/
+app/debug/
 .externalNativeBuild
 .cxx
 app/google-services.json
