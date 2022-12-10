@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
         carAdapter.setOnCarClickListener((position, clickedCar) -> {
             Intent intent = new Intent(getApplicationContext(), CarDetailActivity.class);
             intent.putExtra("car", clickedCar);
+            intent.putExtra("carlist", carList);
             intent.putExtra("user", user);
             startActivity(intent);
         });

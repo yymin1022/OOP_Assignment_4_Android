@@ -12,13 +12,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.oop7even.oop4.Adapter.AccidentTuneRecyclerAdapter;
 import com.oop7even.oop4.Model.Car;
 import com.oop7even.oop4.Model.User;
 
+import java.util.ArrayList;
+
 public class CarDetailActivity extends AppCompatActivity{
+    ArrayList<Car> carList;
     Car car;
     User user;
 
@@ -46,6 +50,7 @@ public class CarDetailActivity extends AppCompatActivity{
         setContentView(R.layout.activity_car_detail);
 
         car = (Car)getIntent().getSerializableExtra("car");
+        carList = (ArrayList<Car>)getIntent().getSerializableExtra("carlist");
         user = (User)getIntent().getSerializableExtra("user");
 
         btnBuyCar = findViewById(R.id.detail_btn_buy);
@@ -73,7 +78,23 @@ public class CarDetailActivity extends AppCompatActivity{
     View.OnClickListener btnListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            user.buyCar(car, null);
+            User seller = new User("sans", true);
+            seller.setCarList(carList);
+
+            user.buyCar(car, seller);
+
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("Car")
+                    .document(car.getNumber())
+                    .update("isSold", true);
+
+            db.collection("User")
+                    .document(user.getName())
+                    .update("car_owned", FieldValue.arrayUnion(car.getNumber()));
+
+            db.collection("User")
+                    .document(seller.getName())
+                    .update("car_owned", FieldValue.arrayRemove(car.getNumber()));
         }
     };
 
