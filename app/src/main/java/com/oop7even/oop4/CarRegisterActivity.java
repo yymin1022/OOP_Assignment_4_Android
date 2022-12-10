@@ -169,6 +169,7 @@ public class CarRegisterActivity extends AppCompatActivity {
             }
 
             Car newCar = new Car(carName, carCompany, carNumber, carColor, carType, carPrice, carCapacity, carDistance, carYear, carFuel, isAccident, isTune);
+            newCar.setCarImage(carImage);
             if(isAccident){
                 newCar.addAccident(tmpAccident);
             }
@@ -184,6 +185,7 @@ public class CarRegisterActivity extends AppCompatActivity {
                 carInfo.put("manufacture", carCompany);
                 carInfo.put("distanceDriven", carDistance);
                 carInfo.put("fuel", carFuel);
+                carInfo.put("img", carImage);
                 carInfo.put("name", carName);
                 carInfo.put("price", carPrice);
                 carInfo.put("type", carType);

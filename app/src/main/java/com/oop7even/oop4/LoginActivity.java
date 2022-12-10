@@ -145,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
                             String number = document.getId();
                             String color = (String)document.getData().get("color");
                             String type = (String)document.getData().get("type");
+                            String image = (String)document.getData().get("img");
                             int price = ((Long)document.getData().get("price")).intValue();
                             int capacity = ((Long)document.getData().get("capacity")).intValue();
                             int distanceDriven = ((Long)document.getData().get("distanceDriven")).intValue();
@@ -155,6 +156,7 @@ public class LoginActivity extends AppCompatActivity {
                             boolean isSold = (boolean)document.getData().get("isSold");
 
                             Car tmpCar = new Car(name, manufacture, number, color, type, price, capacity, distanceDriven, year, fuel, isAccident, isTuned);
+                            tmpCar.setCarImage(image);
 
                             if(isAccident){
                                 HashMap<String, HashMap<String, String>> accidentData = (HashMap<String, HashMap<String, String>>)document.getData().get("accidentData");
