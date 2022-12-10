@@ -158,9 +158,9 @@ public class CarRegisterActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             ImagePicker.with(CarRegisterActivity.this)
-                    .crop()
+                    .galleryOnly()
+                    .crop(16f, 9f)
                     .compress(1024)
-                    .maxResultSize(1280, 720)
                     .createIntent(intent -> {
                         imageLauncher.launch(intent);
                         return null;
