@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.oop7even.oop4.Model.Car;
 import com.oop7even.oop4.R;
 
@@ -37,18 +39,29 @@ public class UserCarRecyclerAdapter extends RecyclerView.Adapter<UserCarRecycler
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position){
-        String carCompany = carList.get(position).getManufacture();
-        String carFuel = carList.get(position).getFuel();
-        String carImage = carList.get(position).getCarImage();
-        String carName = carList.get(position).getName();
-        String carPrice = String.valueOf(carList.get(position).getPrice());
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Car")
+                .get()
+                .addOnCompleteListener(task -> {
+                            if(task.isSuccessful()){
+                                for(QueryDocumentSnapshot document : task.getResult()){
+                                    if(document.getId().equals(carList.get(position).getNumber())){
+                                        String carImage = (String)document.getData().get("img");
+                                        String carCompany = carList.get(position).getManufacture();
+                                        String carFuel = carList.get(position).getFuel();
+                                        String carName = carList.get(position).getName();
+                                        String carPrice = String.valueOf(carList.get(position).getPrice());
 
-//        byte[] imageAsBytes = Base64.decode(carImage.getBytes(), Base64.DEFAULT);
-//        holder.ivCarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
-        holder.tvCompany.setText(carCompany);
-        holder.tvFuel.setText(carFuel);
-        holder.tvName.setText(carName);
-        holder.tvPrice.setText(carPrice);
+                                        byte[] imageAsBytes = Base64.decode(carImage.getBytes(), Base64.DEFAULT);
+                                        holder.ivCarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+                                        holder.tvCompany.setText(carCompany);
+                                        holder.tvFuel.setText(carFuel);
+                                        holder.tvName.setText(carName);
+                                        holder.tvPrice.setText(carPrice);
+                                    }
+                                }
+                            }
+                        });
     }
 
     @Override

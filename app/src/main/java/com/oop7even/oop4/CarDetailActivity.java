@@ -4,11 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.oop7even.oop4.Adapter.AccidentTuneRecyclerAdapter;
 import com.oop7even.oop4.Model.Car;
 import com.oop7even.oop4.Model.User;
@@ -18,6 +23,7 @@ public class CarDetailActivity extends AppCompatActivity{
     User user;
 
     Button btnBuyCar;
+    ImageView ivCarImage;
     TextView tvCarCapacity;
     TextView tvCarColor;
     TextView tvCarDist;
@@ -43,6 +49,7 @@ public class CarDetailActivity extends AppCompatActivity{
         user = (User)getIntent().getSerializableExtra("user");
 
         btnBuyCar = findViewById(R.id.detail_btn_buy);
+        ivCarImage = findViewById(R.id.detail_image_car);
         tvCarCapacity = findViewById(R.id.detail_tv_capacity);
         tvCarColor = findViewById(R.id.detail_tv_color);
         tvCarDist = findViewById(R.id.detail_tv_dist);
@@ -99,5 +106,21 @@ public class CarDetailActivity extends AppCompatActivity{
 
             tvCarNoTune.setVisibility(View.GONE);
         }
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Car")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        for(QueryDocumentSnapshot document : task.getResult()){
+                            if(document.getId().equals(car.getNumber())){
+                                String carImage = (String)document.getData().get("img");
+
+                                byte[] imageAsBytes = Base64.decode(carImage.getBytes(), Base64.DEFAULT);
+                                ivCarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+                            }
+                        }
+                    }
+                });
     }
 }

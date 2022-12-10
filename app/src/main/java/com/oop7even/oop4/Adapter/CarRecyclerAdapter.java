@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.oop7even.oop4.Model.Car;
 import com.oop7even.oop4.R;
 
@@ -56,24 +58,37 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull CarRecyclerAdapter.ViewHolder holder, int position){
-        String carColor = carData.get(position).getColor();
-        String carDist = String.valueOf(carData.get(position).getDistanceDriven());
-        String carFuel = carData.get(position).getFuel();
-        String carImage = carData.get(position).getCarImage();
-        String carManufacture = carData.get(position).getManufacture();
-        String carName = carData.get(position).getName();
-        String carPrice = String.valueOf(carData.get(position).getPrice());
-        String carYear = String.valueOf(carData.get(position).getYear());
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Car")
+                .get()
+                .addOnCompleteListener(task -> {
+                            if(task.isSuccessful()){
+                                for(QueryDocumentSnapshot document : task.getResult()){
+                                    if(document.getId().equals(carData.get(position).getNumber())){
+                                        String carImage = (String)document.getData().get("img");
 
-//        byte[] imageAsBytes = Base64.decode(carImage.getBytes(), Base64.DEFAULT);
-//        holder.ivCarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
-        holder.tvCarColor.setText(carColor);
-        holder.tvCarDist.setText(carDist);
-        holder.tvCarFuel.setText(carFuel);
-        holder.tvCarManufacture.setText(carManufacture);
-        holder.tvCarName.setText(carName);
-        holder.tvCarPrice.setText(carPrice);
-        holder.tvCarYear.setText(carYear);
+                                        String carColor = carData.get(position).getColor();
+                                        String carDist = String.valueOf(carData.get(position).getDistanceDriven());
+                                        String carFuel = carData.get(position).getFuel();
+                                        String carManufacture = carData.get(position).getManufacture();
+                                        String carName = carData.get(position).getName();
+                                        String carPrice = String.valueOf(carData.get(position).getPrice());
+                                        String carYear = String.valueOf(carData.get(position).getYear());
+
+                                        byte[] imageAsBytes = Base64.decode(carImage.getBytes(), Base64.DEFAULT);
+                                        holder.ivCarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+                                        holder.tvCarColor.setText(carColor);
+                                        holder.tvCarDist.setText(carDist);
+                                        holder.tvCarFuel.setText(carFuel);
+                                        holder.tvCarManufacture.setText(carManufacture);
+                                        holder.tvCarName.setText(carName);
+                                        holder.tvCarPrice.setText(carPrice);
+                                        holder.tvCarYear.setText(carYear);
+                                        break;
+                                    }
+                                }
+                            }
+                        });
     }
 
     @Override
