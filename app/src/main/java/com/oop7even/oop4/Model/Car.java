@@ -7,6 +7,10 @@ public class Car implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private enum Fuel{
+        전체,
+        디젤,
+        가솔린,
+        전기,
         All,
         Diesel,
         Electric,
@@ -15,6 +19,10 @@ public class Car implements Serializable {
     }
 
     private enum Type{
+        전체,
+        승용,
+        화물,
+        버스,
         All,
         Car,
         Truck,

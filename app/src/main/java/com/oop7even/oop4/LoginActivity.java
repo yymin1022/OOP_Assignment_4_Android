@@ -22,6 +22,7 @@ import com.oop7even.oop4.Model.Tune;
 import com.oop7even.oop4.Model.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class LoginActivity extends AppCompatActivity {
@@ -31,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText inputID;
     EditText inputPW;
-    User user = new User("Sans", false);
+    User user = new User("", true);
 
     FirebaseFirestore db;
 
@@ -105,14 +106,15 @@ public class LoginActivity extends AppCompatActivity {
     };
 
     void completeLogin(){
-        ArrayList<Car> carList;
+        initUser();
+    }
+
+    void initUser(){
         ArrayList<String> carNumberList = new ArrayList<>();
 
-        user.setIsSeller(true);
         db.collection("User")
                 .get()
                 .addOnCompleteListener(task -> {
-                    boolean isLogin  = false;
                     if(task.isSuccessful()){
                         for(QueryDocumentSnapshot document : task.getResult()){
                             if(document.getId().equals(userName)){
@@ -124,19 +126,22 @@ public class LoginActivity extends AppCompatActivity {
                                 break;
                             }
                         }
+
+                        initUserCars(carNumberList);
                     }
                 });
+    }
 
+    void initUserCars(ArrayList<String> carNumberList){
         db.collection("Car")
                 .get()
                 .addOnCompleteListener(task -> {
-                    boolean isLogin  = false;
                     if(task.isSuccessful()){
                         for(QueryDocumentSnapshot document : task.getResult()){
                             if(carNumberList.contains(document.getId())){
                                 String name = (String)document.getData().get("name");
                                 String manufacture = (String)document.getData().get("manufacture");
-                                String number = (String)document.getData().get("number");
+                                String number = document.getId();
                                 String color = (String)document.getData().get("color");
                                 String type = (String)document.getData().get("type");
                                 int price = ((Long)document.getData().get("price")).intValue();
@@ -150,30 +155,32 @@ public class LoginActivity extends AppCompatActivity {
                                 Car tmpCar = new Car(name, manufacture, number, color, type, price, capacity, distanceDriven, year, fuel, isAccident, isTuned);
 
                                 if(isAccident){
-                                    for(Accident accident : (ArrayList<Accident>)document.getData().get("accidentData")){
-                                        tmpCar.addAccident(accident);
+                                    HashMap<String, HashMap<String, String>> accidentData = (HashMap<String, HashMap<String, String>>)document.getData().get("accidentData");
+                                    for(int idx = 1; idx < ((HashMap<?, ?>) document.getData().get("accidentData")).size(); idx++){
+                                        tmpCar.addAccident(new Accident(accidentData.get(String.format("data%d", idx)).get("date"), accidentData.get(String.format("data%d", idx)).get("content")));
                                     }
                                 }
 
                                 if(isTuned){
-                                    for(Tune tune : (ArrayList<Tune>)document.getData().get("tuneData")){
-                                        tmpCar.addTune(tune);
+                                    HashMap<String, HashMap<String, String>> tuneData = (HashMap<String, HashMap<String, String>>)document.getData().get("tuneData");
+                                    for(int idx = 1; idx < ((HashMap<?, ?>) document.getData().get("tuneData")).size(); idx++){
+                                        tmpCar.addTune(new Tune(tuneData.get(String.format("data%d", idx)).get("date"), tuneData.get(String.format("data%d", idx)).get("content")));
                                     }
                                 }
 
                                 user.addCar(tmpCar);
                             }
                         }
+
+                        user.setIsSeller(isSeller);
+                        user.setName(userName);
+
+                        Intent resultIntent = new Intent(this, LoginActivity.class);
+                        resultIntent.putExtra("user", user);
+                        resultIntent.putExtra("isSeller", isSeller);
+                        setResult(9001, resultIntent);
+                        finish();
                     }
                 });
-
-        user.setIsSeller(isSeller);
-        user.setName(userName);
-
-        Intent resultIntent = new Intent(this, LoginActivity.class);
-        resultIntent.putExtra("user", user);
-        resultIntent.putExtra("isSeller", isSeller);
-        setResult(9001, resultIntent);
-        finish();
     }
 }
