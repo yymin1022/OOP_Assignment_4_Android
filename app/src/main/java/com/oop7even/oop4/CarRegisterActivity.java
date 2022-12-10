@@ -40,7 +40,7 @@ public class CarRegisterActivity extends AppCompatActivity {
     String carColor;
     String carCompany;
     String carFuel;
-    String carImage;
+    String carImage = "";
     String carName;
     String carNumber;
     String carType;
