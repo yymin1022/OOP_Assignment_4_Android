@@ -10,11 +10,13 @@ import android.os.Bundle;
 
 import com.oop7even.oop4.Adapter.CarRecyclerAdapter;
 import com.oop7even.oop4.Model.Car;
+import com.oop7even.oop4.Model.User;
 
 import java.util.ArrayList;
 
 public class SearchResultActivity extends AppCompatActivity{
     ArrayList<Car> carList;
+    User user;
 
     RecyclerView recycleCar;
 
@@ -27,6 +29,7 @@ public class SearchResultActivity extends AppCompatActivity{
         setSupportActionBar(resultToolbar);
 
         carList = (ArrayList<Car>)getIntent().getSerializableExtra("car");
+        user = (User)getIntent().getSerializableExtra("user");
 
         recycleCar = findViewById(R.id.result_recycler_car);
         setupUI();
@@ -40,6 +43,7 @@ public class SearchResultActivity extends AppCompatActivity{
         carAdapter.setOnCarClickListener((position, clickedCar) -> {
             Intent intent = new Intent(getApplicationContext(), CarDetailActivity.class);
             intent.putExtra("car", clickedCar);
+            intent.putExtra("user", user);
             startActivity(intent);
         });
     }

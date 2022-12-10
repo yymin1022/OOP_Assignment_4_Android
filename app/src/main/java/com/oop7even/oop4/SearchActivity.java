@@ -5,7 +5,6 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -15,11 +14,13 @@ import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.slider.RangeSlider;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.oop7even.oop4.Model.Car;
+import com.oop7even.oop4.Model.User;
 
 import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
     ArrayList<Car> carList;
+    User user;
 
     boolean carIsAccident = false;
     boolean carIsTune = false;
@@ -51,6 +52,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         carList = (ArrayList<Car>)getIntent().getSerializableExtra("car");
+        user = (User)getIntent().getSerializableExtra("user");
 
         btnSearch = findViewById(R.id.search_btn_search);
         inputCompany = findViewById(R.id.search_input_company);
@@ -81,6 +83,7 @@ public class SearchActivity extends AppCompatActivity {
 
         Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
         intent.putExtra("car", resultCar);
+        intent.putExtra("user", user);
         startActivity(intent);
     };
 

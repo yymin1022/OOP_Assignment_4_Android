@@ -92,6 +92,9 @@ public class CarDetailActivity extends AppCompatActivity{
                 db.collection("User")
                         .document("sans")
                         .update("car_owned", FieldValue.arrayRemove(car.getNumber()));
+
+                Toast.makeText(getApplicationContext(), "차량이 구매되었습니다.", Toast.LENGTH_SHORT).show();
+                finish();
             }else{
                 Toast.makeText(getApplicationContext(), "차량을 구매하지 못했습니다.", Toast.LENGTH_SHORT).show();
             }
