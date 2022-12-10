@@ -11,9 +11,11 @@ import android.widget.TextView;
 
 import com.oop7even.oop4.Adapter.AccidentTuneRecyclerAdapter;
 import com.oop7even.oop4.Model.Car;
+import com.oop7even.oop4.Model.User;
 
 public class CarDetailActivity extends AppCompatActivity{
     Car car;
+    User user;
 
     Button btnBuyCar;
     TextView tvCarCapacity;
@@ -38,6 +40,7 @@ public class CarDetailActivity extends AppCompatActivity{
         setContentView(R.layout.activity_car_detail);
 
         car = (Car)getIntent().getSerializableExtra("car");
+        user = (User)getIntent().getSerializableExtra("user");
 
         btnBuyCar = findViewById(R.id.detail_btn_buy);
         tvCarCapacity = findViewById(R.id.detail_tv_capacity);
@@ -63,7 +66,7 @@ public class CarDetailActivity extends AppCompatActivity{
     View.OnClickListener btnListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            user.buyCar(car, null);
         }
     };
 
