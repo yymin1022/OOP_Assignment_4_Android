@@ -156,7 +156,6 @@ public class LoginActivity extends AppCompatActivity {
                             boolean isSold = (boolean)document.getData().get("isSold");
 
                             Car tmpCar = new Car(name, manufacture, number, color, type, price, capacity, distanceDriven, year, fuel, isAccident, isTuned);
-                            tmpCar.setCarImage(image);
 
                             if(isAccident){
                                 HashMap<String, HashMap<String, String>> accidentData = (HashMap<String, HashMap<String, String>>)document.getData().get("accidentData");

@@ -169,7 +169,6 @@ public class CarRegisterActivity extends AppCompatActivity {
             }
 
             Car newCar = new Car(carName, carCompany, carNumber, carColor, carType, carPrice, carCapacity, carDistance, carYear, carFuel, isAccident, isTune);
-            newCar.setCarImage(carImage);
             if(isAccident){
                 newCar.addAccident(tmpAccident);
             }
