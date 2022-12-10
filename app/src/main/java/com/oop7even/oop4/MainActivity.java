@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvUsername;
     
     ArrayList<Car> carList = new ArrayList<>();
+    ArrayList<String> carNumberList = new ArrayList<>();
     User user = new User("", false);
 
     @Override
@@ -69,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
 
-        if(carList != null){
-            setupUI();
+        if(carNumberList.size() > 0){
+            initUserCars(carNumberList);
         }
     }
 
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                     isSeller = resultIntent.getBooleanExtra("isSeller", false);
                     user = (User)resultIntent.getSerializableExtra("user");
 
-                    ArrayList<String> carNumberList = (ArrayList<String>)resultIntent.getSerializableExtra("car");
+                    carNumberList = (ArrayList<String>)resultIntent.getSerializableExtra("car");
                     initUserCars(carNumberList);
                 }
             }

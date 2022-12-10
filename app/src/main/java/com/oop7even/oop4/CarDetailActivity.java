@@ -78,10 +78,10 @@ public class CarDetailActivity extends AppCompatActivity{
     View.OnClickListener btnListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            User seller = new User("sans", true);
-            seller.setCarList(carList);
+//            User seller = new User("sans", true);
+//            seller.setCarList(carList);
 
-            user.buyCar(car, seller);
+            user.buyCar(car, null);
 
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("Car")
@@ -93,7 +93,7 @@ public class CarDetailActivity extends AppCompatActivity{
                     .update("car_owned", FieldValue.arrayUnion(car.getNumber()));
 
             db.collection("User")
-                    .document(seller.getName())
+                    .document("sans")
                     .update("car_owned", FieldValue.arrayRemove(car.getNumber()));
         }
     };
