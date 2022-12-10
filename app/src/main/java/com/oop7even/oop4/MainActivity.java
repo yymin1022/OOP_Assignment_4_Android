@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.oop7even.oop4.Adapter.CarRecyclerAdapter;
 import com.oop7even.oop4.Model.Accident;
 import com.oop7even.oop4.Model.Car;
@@ -24,6 +26,7 @@ import com.oop7even.oop4.Model.Tune;
 import com.oop7even.oop4.Model.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     boolean isLoggedIn = false;
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvCarCnt;
     TextView tvUsername;
     
-    ArrayList<Car> carList;
+    ArrayList<Car> carList = new ArrayList<>();
     User user = new User("", false);
 
     @Override
@@ -83,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.toolbar_menu_info:
                 Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
-                intent.putExtra("car", carList);
                 intent.putExtra("user", user);
                 startActivity(intent);
                 return true;
@@ -119,17 +121,10 @@ public class MainActivity extends AppCompatActivity {
 
                 if(resultIntent != null){
                     isSeller = resultIntent.getBooleanExtra("isSeller", false);
-                    user = (User) resultIntent.getSerializableExtra("user");
+                    user = (User)resultIntent.getSerializableExtra("user");
 
-                    if(isSeller){
-                        carList = user.getCarList();
-                    }else{
-                        carList = (ArrayList<Car>) resultIntent.getSerializableExtra("car");
-                    }
-
-                    Toast.makeText(getApplicationContext(), isSeller ? "Seller : " : "Customer : " + user.getName(), Toast.LENGTH_SHORT).show();
-
-                    setupUI();
+                    ArrayList<String> carNumberList = (ArrayList<String>)resultIntent.getSerializableExtra("car");
+                    initUserCars(carNumberList);
                 }
             }
         });
@@ -153,5 +148,57 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("user", user);
             startActivity(intent);
         });
+    }
+
+    void initUserCars(ArrayList<String> carNumberList){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Car")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        for(QueryDocumentSnapshot document : task.getResult()){
+                            String name = (String)document.getData().get("name");
+                            String manufacture = (String)document.getData().get("manufacture");
+                            String number = document.getId();
+                            String color = (String)document.getData().get("color");
+                            String type = (String)document.getData().get("type");
+                            String image = (String)document.getData().get("img");
+                            int price = ((Long)document.getData().get("price")).intValue();
+                            int capacity = ((Long)document.getData().get("capacity")).intValue();
+                            int distanceDriven = ((Long)document.getData().get("distanceDriven")).intValue();
+                            int year = ((Long)document.getData().get("year")).intValue();
+                            String fuel = (String)document.getData().get("fuel");
+                            boolean isAccident = (boolean)document.getData().get("isAccident");
+                            boolean isTuned = (boolean)document.getData().get("isTuned");
+                            boolean isSold = (boolean)document.getData().get("isSold");
+
+                            Car tmpCar = new Car(name, manufacture, number, color, type, price, capacity, distanceDriven, year, fuel, isAccident, isTuned);
+
+                            if(isAccident){
+                                HashMap<String, HashMap<String, String>> accidentData = (HashMap<String, HashMap<String, String>>)document.getData().get("accidentData");
+                                for(int idx = 1; idx < ((HashMap<?, ?>) document.getData().get("accidentData")).size(); idx++){
+                                    tmpCar.addAccident(new Accident(accidentData.get(String.format("data%d", idx)).get("date"), accidentData.get(String.format("data%d", idx)).get("content")));
+                                }
+                            }
+
+                            if(isTuned){
+                                HashMap<String, HashMap<String, String>> tuneData = (HashMap<String, HashMap<String, String>>)document.getData().get("tuneData");
+                                for(int idx = 1; idx < ((HashMap<?, ?>) document.getData().get("tuneData")).size(); idx++){
+                                    tmpCar.addTune(new Tune(tuneData.get(String.format("data%d", idx)).get("date"), tuneData.get(String.format("data%d", idx)).get("content")));
+                                }
+                            }
+
+                            if(!isSold){
+                                carList.add(tmpCar);
+                            }
+
+                            if(carNumberList.contains(document.getId())){
+                                user.addCar(tmpCar);
+                            }
+                        }
+
+                        setupUI();
+                    }
+                });
     }
 }

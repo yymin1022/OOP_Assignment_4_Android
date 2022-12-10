@@ -8,13 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.oop7even.oop4.Adapter.UserCarRecyclerAdapter;
-import com.oop7even.oop4.Model.Car;
 import com.oop7even.oop4.Model.User;
 
-import java.util.ArrayList;
-
 public class UserInfoActivity extends AppCompatActivity{
-    ArrayList<Car> carList;
     User user;
 
     RecyclerView recycleCar;
@@ -27,7 +23,6 @@ public class UserInfoActivity extends AppCompatActivity{
         Toolbar infoToolbar = findViewById(R.id.info_toolbar);
         setSupportActionBar(infoToolbar);
 
-        carList = (ArrayList<Car>)getIntent().getSerializableExtra("car");
         user = (User)getIntent().getSerializableExtra("user");
 
         recycleCar = findViewById(R.id.info_recycler_car);

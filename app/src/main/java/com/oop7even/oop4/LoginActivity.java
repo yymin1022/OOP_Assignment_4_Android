@@ -129,62 +129,11 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
 
-                        initUserCars(carNumberList);
-                    }
-                });
-    }
-
-    void initUserCars(ArrayList<String> carNumberList){
-        db.collection("Car")
-                .get()
-                .addOnCompleteListener(task -> {
-                    if(task.isSuccessful()){
-                        for(QueryDocumentSnapshot document : task.getResult()){
-                            String name = (String)document.getData().get("name");
-                            String manufacture = (String)document.getData().get("manufacture");
-                            String number = document.getId();
-                            String color = (String)document.getData().get("color");
-                            String type = (String)document.getData().get("type");
-                            String image = (String)document.getData().get("img");
-                            int price = ((Long)document.getData().get("price")).intValue();
-                            int capacity = ((Long)document.getData().get("capacity")).intValue();
-                            int distanceDriven = ((Long)document.getData().get("distanceDriven")).intValue();
-                            int year = ((Long)document.getData().get("year")).intValue();
-                            String fuel = (String)document.getData().get("fuel");
-                            boolean isAccident = (boolean)document.getData().get("isAccident");
-                            boolean isTuned = (boolean)document.getData().get("isTuned");
-                            boolean isSold = (boolean)document.getData().get("isSold");
-
-                            Car tmpCar = new Car(name, manufacture, number, color, type, price, capacity, distanceDriven, year, fuel, isAccident, isTuned);
-
-                            if(isAccident){
-                                HashMap<String, HashMap<String, String>> accidentData = (HashMap<String, HashMap<String, String>>)document.getData().get("accidentData");
-                                for(int idx = 1; idx < ((HashMap<?, ?>) document.getData().get("accidentData")).size(); idx++){
-                                    tmpCar.addAccident(new Accident(accidentData.get(String.format("data%d", idx)).get("date"), accidentData.get(String.format("data%d", idx)).get("content")));
-                                }
-                            }
-
-                            if(isTuned){
-                                HashMap<String, HashMap<String, String>> tuneData = (HashMap<String, HashMap<String, String>>)document.getData().get("tuneData");
-                                for(int idx = 1; idx < ((HashMap<?, ?>) document.getData().get("tuneData")).size(); idx++){
-                                    tmpCar.addTune(new Tune(tuneData.get(String.format("data%d", idx)).get("date"), tuneData.get(String.format("data%d", idx)).get("content")));
-                                }
-                            }
-
-                            if(!isSold){
-                                carList.add(tmpCar);
-                            }
-
-                            if(carNumberList.contains(document.getId())){
-                                user.addCar(tmpCar);
-                            }
-                        }
-
                         user.setIsSeller(isSeller);
                         user.setName(userName);
 
                         Intent resultIntent = new Intent(this, LoginActivity.class);
-                        resultIntent.putExtra("car", carList);
+                        resultIntent.putExtra("car", carNumberList);
                         resultIntent.putExtra("user", user);
                         resultIntent.putExtra("isSeller", isSeller);
                         setResult(9001, resultIntent);
