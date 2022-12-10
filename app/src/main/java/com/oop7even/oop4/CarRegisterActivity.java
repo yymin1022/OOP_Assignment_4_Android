@@ -7,8 +7,13 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.ImageDecoder;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,6 +26,9 @@ import com.oop7even.oop4.Model.Car;
 import com.oop7even.oop4.Model.Tune;
 import com.oop7even.oop4.Model.User;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 public class CarRegisterActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent> imageLauncher;
     User user;
@@ -32,6 +40,7 @@ public class CarRegisterActivity extends AppCompatActivity {
     String carColor;
     String carCompany;
     String carFuel;
+    String carImage;
     String carName;
     String carNumber;
     String carType;
@@ -91,9 +100,24 @@ public class CarRegisterActivity extends AppCompatActivity {
                 Intent resultIntent = result.getData();
 
                 if(resultIntent != null){
-                    Uri fileUri = resultIntent.getData();
-                    imageCar.setImageURI(fileUri);
-                    imageCar.getLayoutParams().height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    Uri imageUri = resultIntent.getData();
+
+                    try{
+                        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.P){
+                            Bitmap imageBitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(getContentResolver(), imageUri));
+                            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 70, outputStream);
+                            byte[] bytes = outputStream.toByteArray();
+                            carImage = Base64.encodeToString(bytes, Base64.DEFAULT);
+
+                            imageCar.setImageURI(imageUri);
+                            imageCar.getLayoutParams().height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                        }
+                    }catch(IOException e){
+                        e.printStackTrace();
+                    }
+
+
                 }
             }
         });
@@ -118,7 +142,7 @@ public class CarRegisterActivity extends AppCompatActivity {
             carType = inputType.getText().toString();
             carYear = Integer.parseInt(inputYear.getText().toString());
 
-            if(carColor.isEmpty() || carCompany.isEmpty() || carFuel.isEmpty() || carName.isEmpty() || carNumber.isEmpty() || carType.isEmpty()){
+            if(carColor.isEmpty() || carCompany.isEmpty() || carFuel.isEmpty() || carImage.isEmpty() || carName.isEmpty() || carNumber.isEmpty() || carType.isEmpty()){
                 Toast.makeText(getApplicationContext(), "차량 정보를 모두 입력해주세요.", Toast.LENGTH_SHORT).show();
                 return;
             }
