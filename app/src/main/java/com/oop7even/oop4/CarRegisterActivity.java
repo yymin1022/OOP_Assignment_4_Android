@@ -159,11 +159,11 @@ public class CarRegisterActivity extends AppCompatActivity {
             boolean isTune = false;
             Accident tmpAccident = new Accident("", "");
             Tune tmpTune = new Tune("", "");
-            if(inputAccidentContent.getText() != null && inputAccidentDate.getText() != null){
+            if(inputAccidentContent.getText() != null && inputAccidentDate.getText() != null && inputAccidentContent.getText().length() > 0){
                 isAccident = true;
                 tmpAccident = new Accident(inputAccidentDate.getText().toString(), inputAccidentContent.getText().toString());
             }
-            if(inputTuneContent.getText() != null && inputTuneDate.getText() != null){
+            if(inputTuneContent.getText() != null && inputTuneDate.getText() != null && inputTuneContent.getText().length() > 0){
                 isTune = true;
                 tmpTune = new Tune(inputTuneDate.getText().toString(), inputTuneContent.getText().toString());
             }
