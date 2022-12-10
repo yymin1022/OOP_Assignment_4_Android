@@ -129,7 +129,6 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
 
-                        user.setIsSeller(isSeller);
                         user.setName(userName);
 
                         Intent resultIntent = new Intent(this, LoginActivity.class);

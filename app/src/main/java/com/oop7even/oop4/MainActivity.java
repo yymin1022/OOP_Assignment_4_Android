@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.toolbar_menu_info:
                 Intent intent = new Intent(getApplicationContext(), UserInfoActivity.class);
-                intent.putExtra("user", user);
+                intent.putExtra("carList", user.getCarList());
                 startActivity(intent);
                 return true;
             default:
@@ -197,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
 
+                        user.setIsSeller(isSeller);
                         setupUI();
                     }
                 });
