@@ -22,7 +22,7 @@ public class SearchActivity extends AppCompatActivity {
 
     boolean carIsAccident = false;
     boolean carIsTune = false;
-    int carDistanceMax = 500000;
+    int carDistanceMax = 300000;
     int carDistanceMin = 0;
     int carPriceMax = 50000;
     int carPriceMin = 0;
