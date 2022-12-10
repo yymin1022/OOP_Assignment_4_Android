@@ -152,6 +152,7 @@ public class LoginActivity extends AppCompatActivity {
                             String fuel = (String)document.getData().get("fuel");
                             boolean isAccident = (boolean)document.getData().get("isAccident");
                             boolean isTuned = (boolean)document.getData().get("isTuned");
+                            boolean isSold = (boolean)document.getData().get("isSold");
 
                             Car tmpCar = new Car(name, manufacture, number, color, type, price, capacity, distanceDriven, year, fuel, isAccident, isTuned);
 
@@ -169,7 +170,10 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
 
-                            carList.add(tmpCar);
+                            if(!isSold){
+                                carList.add(tmpCar);
+                            }
+
                             if(carNumberList.contains(document.getId())){
                                 user.addCar(tmpCar);
                             }
