@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -78,23 +79,24 @@ public class CarDetailActivity extends AppCompatActivity{
     View.OnClickListener btnListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            User seller = new User("sans", true);
-//            seller.setCarList(carList);
+            if(user.buyCar(car, null)){
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("Car")
+                        .document(car.getNumber())
+                        .update("isSold", true);
 
-            user.buyCar(car, null);
+                db.collection("User")
+                        .document(user.getName())
+                        .update("car_owned", FieldValue.arrayUnion(car.getNumber()));
 
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            db.collection("Car")
-                    .document(car.getNumber())
-                    .update("isSold", true);
+                db.collection("User")
+                        .document("sans")
+                        .update("car_owned", FieldValue.arrayRemove(car.getNumber()));
+            }else{
+                Toast.makeText(getApplicationContext(), "차량을 구매하지 못했습니다.", Toast.LENGTH_SHORT).show();
+            }
 
-            db.collection("User")
-                    .document(user.getName())
-                    .update("car_owned", FieldValue.arrayUnion(car.getNumber()));
 
-            db.collection("User")
-                    .document("sans")
-                    .update("car_owned", FieldValue.arrayRemove(car.getNumber()));
         }
     };
 
