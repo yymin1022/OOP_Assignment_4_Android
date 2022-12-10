@@ -5,6 +5,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -27,7 +28,7 @@ public class SearchActivity extends AppCompatActivity {
     int carPriceMax = 50000;
     int carPriceMin = 0;
     int carYearMax = 2022;
-    int carYearMin = 0;
+    int carYearMin = 1990;
     String carCompany = "";
     String carFuel = "전체";
     String carName = "";
