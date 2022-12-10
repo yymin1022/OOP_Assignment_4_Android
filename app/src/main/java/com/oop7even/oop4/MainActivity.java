@@ -121,19 +121,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void setupUI(){
-        carList = new ArrayList<>();
-        Car testCar = new Car("Veloster N", "Hyundai", "123구1234", "White", "Car", 2300, 5, 87120, 2019, "Gasoline", true, true);
-        testCar.addAccident(new Accident("2022. 11. 28. 12:00", "차선변경 중 상대방 과실 100% 접촉사고. 좌측 휀더 교환"));
-        testCar.addTune(new Tune("2022. 10. 23.", "배기구 2개, 가변밸브 1개"));
-        Car testCar2 = new Car("Elantra N", "Hyundai", "12사1123", "퍼포먼스 블루", "Car", 2600, 5, 32250, 2021, "Gasoline", false, false);
-        carList.add(testCar2);
-        carList.add(testCar);
-        carList.add(testCar);
-        carList.add(testCar);
-
-        User seller = new User("Sans", true);
-        seller.addCar(testCar2);
-        user.buyCar(testCar2, seller);
+        carList = user.getCarList();
 
         CarRecyclerAdapter carAdapter = new CarRecyclerAdapter(carList);
 

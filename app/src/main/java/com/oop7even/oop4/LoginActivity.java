@@ -30,10 +30,14 @@ public class LoginActivity extends AppCompatActivity {
     EditText inputPW;
     User user = new User("Sans", false);
 
+    FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        db = FirebaseFirestore.getInstance();
 
         AppCompatButton btnLogin = findViewById(R.id.login_btn_login);
         CheckBox chkIsSeller = findViewById(R.id.login_chk_seller);
@@ -52,7 +56,6 @@ public class LoginActivity extends AppCompatActivity {
         }else if(userPW.isEmpty()){
             Toast.makeText(getApplicationContext(), "로그인 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
         }else{
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("User")
                     .get()
                     .addOnCompleteListener(task -> {
