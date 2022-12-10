@@ -109,8 +109,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if(resultIntent != null){
                     isSeller = resultIntent.getBooleanExtra("isSeller", false);
-                    carList = (ArrayList<Car>) resultIntent.getSerializableExtra("car");
                     user = (User) resultIntent.getSerializableExtra("user");
+
+                    if(isSeller){
+                        carList = user.getCarList();
+                    }else{
+                        carList = (ArrayList<Car>) resultIntent.getSerializableExtra("car");
+                    }
+
                     Toast.makeText(getApplicationContext(), isSeller ? "Seller : " : "Customer : " + user.getName(), Toast.LENGTH_SHORT).show();
 
                     setupUI();
