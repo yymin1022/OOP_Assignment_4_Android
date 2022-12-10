@@ -43,12 +43,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:id="@+id/register_layout_image">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:src="@drawable/ic_camera" />
+                        android:src="@drawable/ic_camera"
+                        android:id="@+id/register_image_car" />
 
                 </LinearLayout>
 
