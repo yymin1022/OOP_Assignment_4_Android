@@ -39,7 +39,7 @@ public class SearchResultActivity extends AppCompatActivity{
 
         carAdapter.setOnCarClickListener((position, clickedCar) -> {
             Intent intent = new Intent(getApplicationContext(), CarDetailActivity.class);
-            intent.putExtra("Car", clickedCar);
+            intent.putExtra("car", clickedCar);
             startActivity(intent);
         });
     }

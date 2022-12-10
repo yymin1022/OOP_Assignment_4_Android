@@ -37,7 +37,7 @@ public class CarDetailActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_detail);
 
-        car = (Car)getIntent().getSerializableExtra("Car");
+        car = (Car)getIntent().getSerializableExtra("car");
 
         btnBuyCar = findViewById(R.id.detail_btn_buy);
         tvCarCapacity = findViewById(R.id.detail_tv_capacity);
@@ -63,7 +63,7 @@ public class CarDetailActivity extends AppCompatActivity{
     View.OnClickListener btnListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            
+
         }
     };
 

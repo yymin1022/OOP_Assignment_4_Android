@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.main_btn_search:
                 intent = new Intent(getApplicationContext(), SearchActivity.class);
                 intent.putExtra("car", carList);
+                intent.putExtra("user", user);
                 startActivity(intent);
                 break;
         }
@@ -147,7 +148,8 @@ public class MainActivity extends AppCompatActivity {
 
         carAdapter.setOnCarClickListener((position, clickedCar) -> {
             Intent intent = new Intent(getApplicationContext(), CarDetailActivity.class);
-            intent.putExtra("Car", clickedCar);
+            intent.putExtra("car", clickedCar);
+            intent.putExtra("user", user);
             startActivity(intent);
         });
     }
