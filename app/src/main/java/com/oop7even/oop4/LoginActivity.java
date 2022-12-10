@@ -1,5 +1,6 @@
 package com.oop7even.oop4;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -13,6 +14,11 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.oop7even.oop4.Model.User;
 
 public class LoginActivity extends AppCompatActivity {
@@ -46,7 +52,25 @@ public class LoginActivity extends AppCompatActivity {
         }else if(userPW.isEmpty()){
             Toast.makeText(getApplicationContext(), "로그인 비밀번호가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
         }else{
-            completeLogin();
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("User")
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        boolean isLogin  = false;
+                        if(task.isSuccessful()){
+                            for(QueryDocumentSnapshot document : task.getResult()){
+                                if(document.getId().equals(userName) && document.getData().get("password").equals(userPW)){
+                                    completeLogin();
+                                    isLogin = true;
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        if(!isLogin){
+                            Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         }
     };
 
