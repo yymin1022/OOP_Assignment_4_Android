@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         if(carNumberList.size() > 0){
+            carList.clear();
             initUserCars(carNumberList);
         }
     }
@@ -126,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
                     user = (User)resultIntent.getSerializableExtra("user");
 
                     carNumberList = (ArrayList<String>)resultIntent.getSerializableExtra("car");
-                    initUserCars(carNumberList);
                 }
             }
         });
