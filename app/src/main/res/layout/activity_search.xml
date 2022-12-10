@@ -44,7 +44,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/search_toggle_type"
-                    android:checkedButton="@id/search_toggle_type_all"
+                    app:checkedButton="@id/search_toggle_type_all"
+                    app:selectionRequired="true"
                     app:singleSelection="true">
                     <Button
                         android:layout_width="wrap_content"
