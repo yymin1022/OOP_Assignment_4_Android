@@ -137,8 +137,10 @@ public class CarDetailActivity extends AppCompatActivity{
                             if(document.getId().equals(car.getNumber())){
                                 String carImage = (String)document.getData().get("img");
 
-                                byte[] imageAsBytes = Base64.decode(carImage.getBytes(), Base64.DEFAULT);
-                                ivCarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+                                if(carImage != null){
+                                    byte[] imageAsBytes = Base64.decode(carImage.getBytes(), Base64.DEFAULT);
+                                    ivCarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length));
+                                }
                             }
                         }
                     }
