@@ -2,6 +2,7 @@ package com.oop7even.oop4;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -14,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,6 +23,10 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.oop7even.oop4.Model.Accident;
 import com.oop7even.oop4.Model.Car;
 import com.oop7even.oop4.Model.Tune;
@@ -28,6 +34,8 @@ import com.oop7even.oop4.Model.User;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CarRegisterActivity extends AppCompatActivity {
     ActivityResultLauncher<Intent> imageLauncher;
@@ -169,8 +177,47 @@ public class CarRegisterActivity extends AppCompatActivity {
             }
 
             if(user.addCar(newCar)){
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                Map<String, Object> carInfo = new HashMap<>();
+                carInfo.put("capacity", carCapacity);
+                carInfo.put("color", carColor);
+                carInfo.put("manufacture", carCompany);
+                carInfo.put("distanceDriven", carDistance);
+                carInfo.put("fuel", carFuel);
+                carInfo.put("name", carName);
+                carInfo.put("price", carPrice);
+                carInfo.put("type", carType);
+                carInfo.put("year", carYear);
+                carInfo.put("isAccident", isAccident);
+                carInfo.put("isTune", isTune);
+
+                
+                if(isAccident){
+                    HashMap<String, Object> mapAccident = new HashMap<>();
+                    mapAccident.put("content", tmpAccident.getContent());
+                    mapAccident.put("date", tmpAccident.getDate());
+
+                    HashMap<String, Object> mapUpload = new HashMap<>();
+                    mapUpload.put("data1", mapAccident);
+                    
+                    carInfo.put("accidentData", mapUpload);
+                }
+
+                if(isTune){
+                    HashMap<String, Object> mapTune = new HashMap<>();
+                    mapTune.put("content", tmpTune.getContent());
+                    mapTune.put("date", tmpTune.getDate());
+
+                    HashMap<String, Object> mapUpload = new HashMap<>();
+                    mapUpload.put("data1", mapTune);
+
+                    carInfo.put("tuneData", mapUpload);
+                }
+
+                db.collection("Car").document(carNumber).set(carInfo);
+
                 Toast.makeText(getApplicationContext(), "차량이 등록되었습니다.", Toast.LENGTH_SHORT).show();
-                // Upload to Firebase
+
                 finish();
             }else{
                 Toast.makeText(getApplicationContext(), "차량을 등록하지 못했습니다.", Toast.LENGTH_SHORT).show();
