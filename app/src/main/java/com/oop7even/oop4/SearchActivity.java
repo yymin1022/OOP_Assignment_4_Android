@@ -121,8 +121,8 @@ public class SearchActivity extends AppCompatActivity {
     };
 
     RangeSlider.OnChangeListener distanceListener = (slider, value, fromUser) -> {
-        carDistanceMax = Math.round(slider.getValues().get(1));
-        carDistanceMin = Math.round(slider.getValues().get(0));
+        carDistanceMax = Math.round(slider.getValues().get(1)) * 1000;
+        carDistanceMin = Math.round(slider.getValues().get(0)) * 1000;
     };
 
     RangeSlider.OnChangeListener priceListener = (slider, value, fromUser) -> {
