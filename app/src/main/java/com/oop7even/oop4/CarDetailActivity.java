@@ -56,8 +56,16 @@ public class CarDetailActivity extends AppCompatActivity{
         tvCarNoAccident = findViewById(R.id.detail_tv_no_accident);
         tvCarNoTune = findViewById(R.id.detail_tv_no_tune);
 
+        btnBuyCar.setOnClickListener(btnListener);
         setCarInfo();
     }
+
+    View.OnClickListener btnListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            
+        }
+    };
 
     void setCarInfo(){
         tvCarCapacity.setText(String.valueOf(car.getCapacity()));
