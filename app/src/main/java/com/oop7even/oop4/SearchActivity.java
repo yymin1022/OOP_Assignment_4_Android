@@ -147,8 +147,8 @@ public class SearchActivity extends AppCompatActivity {
         ArrayList<Car> resultCarList = new ArrayList<>();
 
         for(Car car : carList){
-            if(type.equals("All")){
-                if(fuel.equals("All")){
+            if(type.equals("전체")){
+                if(fuel.equals("전체")){
                     if(car.getName().contains(name) && car.getManufacture().contains(company) && car.getPrice() <= maxPrice && car.getPrice() >= minPrice && car.getDistanceDriven() <= maxDistanceDriven && car.getDistanceDriven() >= minDistanceDriven && car.getYear() <= maxYear && car.getYear() >= minYear &&  car.getIsAccident() == isAccident && car.getIsTuned() == isTuned){
                         resultCarList.add(car);
                     }
@@ -158,7 +158,7 @@ public class SearchActivity extends AppCompatActivity {
                     }
                 }
             }else{
-                if(fuel.equals("All")){
+                if(fuel.equals("전체")){
                     if(car.getName().contains(name) && car.getManufacture().contains(company) && car.getType().equals(type) && car.getPrice() <= maxPrice && car.getPrice() >= minPrice && car.getDistanceDriven() <= maxDistanceDriven && car.getDistanceDriven() >= minDistanceDriven && car.getYear() <= maxYear && car.getYear() >= minYear && car.getIsAccident() == isAccident && car.getIsTuned() == isTuned){
                         resultCarList.add(car);
                     }
