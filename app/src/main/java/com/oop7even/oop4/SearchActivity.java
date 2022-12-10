@@ -29,9 +29,9 @@ public class SearchActivity extends AppCompatActivity {
     int carYearMax = 2022;
     int carYearMin = 0;
     String carCompany = "";
-    String carFuel = "All";
+    String carFuel = "전체";
     String carName = "";
-    String carType = "All";
+    String carType = "전체";
 
     AppCompatButton btnSearch;
     EditText inputCompany;
@@ -86,16 +86,16 @@ public class SearchActivity extends AppCompatActivity {
     MaterialButtonToggleGroup.OnButtonCheckedListener typeListener = (group, checkedId, isChecked) -> {
         switch(checkedId){
             case R.id.search_toggle_type_all:
-                carType = "All";
+                carType = "전체";
                 break;
             case R.id.search_toggle_type_car:
-                carType = "Car";
+                carType = "승용";
                 break;
             case R.id.search_toggle_type_truck:
-                carType = "Truck";
+                carType = "화물";
                 break;
             case R.id.search_toggle_type_bus:
-                carType = "Bus";
+                carType = "버스";
                 break;
         }
     };
@@ -103,19 +103,19 @@ public class SearchActivity extends AppCompatActivity {
     RadioGroup.OnCheckedChangeListener fuelListener = (group, checkedId) -> {
         switch(checkedId){
             case R.id.search_radio_fuel_all:
-                carFuel = "All";
+                carFuel = "전체";
                 break;
             case R.id.search_radio_fuel_gasoline:
-                carFuel = "Gasoline";
+                carFuel = "가솔린";
                 break;
             case R.id.search_radio_fuel_diesel:
-                carFuel = "Diesel";
+                carFuel = "디젤";
                 break;
             case R.id.search_radio_fuel_lpg:
                 carFuel = "LPG";
                 break;
             case R.id.search_radio_fuel_elec:
-                carFuel = "Electric";
+                carFuel = "전기";
                 break;
         }
     };
