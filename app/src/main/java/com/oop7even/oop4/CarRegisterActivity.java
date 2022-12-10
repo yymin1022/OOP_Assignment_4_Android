@@ -1,8 +1,13 @@
 package com.oop7even.oop4;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -17,6 +22,7 @@ import com.oop7even.oop4.Model.Tune;
 import com.oop7even.oop4.Model.User;
 
 public class CarRegisterActivity extends AppCompatActivity {
+    ActivityResultLauncher<Intent> imageLauncher;
     User user;
 
     int carCapacity;
@@ -79,6 +85,18 @@ public class CarRegisterActivity extends AppCompatActivity {
 
         btnRegister.setOnClickListener(btnListener);
         layoutImageCar.setOnClickListener(imageListener);
+
+        imageLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if(result.getResultCode() == Activity.RESULT_OK){
+                Intent resultIntent = result.getData();
+
+                if(resultIntent != null){
+                    Uri fileUri = resultIntent.getData();
+                    imageCar.setImageURI(fileUri);
+                    imageCar.getLayoutParams().height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                }
+            }
+        });
     }
 
     View.OnClickListener btnListener = new View.OnClickListener() {
@@ -143,7 +161,10 @@ public class CarRegisterActivity extends AppCompatActivity {
                     .crop()
                     .compress(1024)
                     .maxResultSize(1280, 720)
-                    .start();
+                    .createIntent(intent -> {
+                        imageLauncher.launch(intent);
+                        return null;
+                    });
         }
     };
 }
