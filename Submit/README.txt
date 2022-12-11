@@ -14,6 +14,7 @@ Source Code Structure
 Execution
 - If Android SDK is Setted
 -> Open Project with Android Studio
+- Or just Install APK File on Android Device
 
 Used Android Libraries
 - AndroidX AppCompat by Google
