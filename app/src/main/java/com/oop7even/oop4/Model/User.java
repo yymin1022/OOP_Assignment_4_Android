@@ -48,16 +48,16 @@ public class User implements Serializable {
                 }
             }
             try {
-//                for(int i= 0 ;i < seller.getCarList().size(); i++) {
-//                    if (seller.getCarList().get(i).getNumber().equals(targetCar.getNumber())) {
+                for(int i= 0 ;i < seller.getCarList().size(); i++) {
+                    if (seller.getCarList().get(i).getNumber().equals(targetCar.getNumber())) {
                         Cars.add(targetCar);
-//                        seller.getCarList().remove(targetCar);
-//                        System.out.println("성공적으로 구매했습니다.");
+                        seller.getCarList().remove(targetCar);
+                        System.out.println("성공적으로 구매했습니다.");
                         return true; //정상적으로 구매한 경우 true
-//                    }
-//                }
-//                System.out.println("해당 차량이 존재하지 않습니다.");
-//                return false; //끝까지 스캔했는데도 차량이 나오지 않으면 false
+                    }
+                }
+                System.out.println("해당 차량이 존재하지 않습니다.");
+                return false; //끝까지 스캔했는데도 차량이 나오지 않으면 false
             }catch (Exception e){
                 e.printStackTrace(); //혹시 모를 exception
             }
