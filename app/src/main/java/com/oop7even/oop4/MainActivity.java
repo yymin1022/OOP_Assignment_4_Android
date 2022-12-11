@@ -176,14 +176,14 @@ public class MainActivity extends AppCompatActivity {
 
                             if(isAccident){
                                 HashMap<String, HashMap<String, String>> accidentData = (HashMap<String, HashMap<String, String>>)document.getData().get("accidentData");
-                                for(int idx = 1; idx < ((HashMap<?, ?>) document.getData().get("accidentData")).size(); idx++){
+                                for(int idx = 1; idx <= ((HashMap<?, ?>) document.getData().get("accidentData")).size(); idx++){
                                     tmpCar.addAccident(new Accident(accidentData.get(String.format("data%d", idx)).get("date"), Objects.requireNonNull(accidentData.get(String.format("data%d", idx))).get("content")));
                                 }
                             }
 
                             if(isTuned){
                                 HashMap<String, HashMap<String, String>> tuneData = (HashMap<String, HashMap<String, String>>)document.getData().get("tuneData");
-                                for(int idx = 1; idx < ((HashMap<?, ?>) document.getData().get("tuneData")).size(); idx++){
+                                for(int idx = 1; idx <= ((HashMap<?, ?>) document.getData().get("tuneData")).size(); idx++){
                                     tmpCar.addTune(new Tune(tuneData.get(String.format("data%d", idx)).get("date"), Objects.requireNonNull(tuneData.get(String.format("data%d", idx))).get("content")));
                                 }
                             }
