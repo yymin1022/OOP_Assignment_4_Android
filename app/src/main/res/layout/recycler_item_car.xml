@@ -201,7 +201,8 @@
                     android:gravity="start"
                     android:text="사고 없음 / 개조 없음"
                     android:textColor="@color/black"
-                    android:textSize="15sp"/>
+                    android:textSize="15sp"
+                    android:id="@+id/recycle_tv_accidenttune" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"

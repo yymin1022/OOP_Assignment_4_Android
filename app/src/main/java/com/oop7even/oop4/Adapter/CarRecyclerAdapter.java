@@ -84,6 +84,12 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
                                         holder.tvCarName.setText(carName);
                                         holder.tvCarPrice.setText(carPrice);
                                         holder.tvCarYear.setText(carYear);
+
+                                        boolean isAccident = carData.get(position).getIsAccident();
+                                        boolean isTune = carData.get(position).getIsTuned();
+                                        String carAccidentTune = String.format("사고 %s / 개조 %s", isAccident ? "있음" : "없음", isTune ? "있음" : "없음");
+                                        holder.tvCarAccidentTune.setText(carAccidentTune);
+
                                         break;
                                     }
                                 }
@@ -98,6 +104,7 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView ivCarImage;
+        TextView tvCarAccidentTune;
         TextView tvCarColor;
         TextView tvCarDist;
         TextView tvCarFuel;
@@ -110,6 +117,7 @@ public class CarRecyclerAdapter extends RecyclerView.Adapter<CarRecyclerAdapter.
             super(itemView);
 
             ivCarImage = itemView.findViewById(R.id.recycle_image_car);
+            tvCarAccidentTune = itemView.findViewById(R.id.recycle_tv_accidenttune);
             tvCarColor = itemView.findViewById(R.id.recycle_tv_color);
             tvCarDist = itemView.findViewById(R.id.recycle_tv_dist);
             tvCarFuel = itemView.findViewById(R.id.recycle_tv_fuel);
